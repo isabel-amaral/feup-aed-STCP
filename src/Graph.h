@@ -50,11 +50,11 @@ class Graph {
         /**
          * latitude da paragem
          */
-        long latitude;
+        double latitude;
         /**
          * longitude da paragem
          */
-        long longitude;
+        double longitude;
 
         /**
          * lista dos segmentos de percurso que partem da paragem em questão
@@ -102,6 +102,10 @@ public:
      * @param dest paragem de destino
      */
     void addEdge(int src, string code, string name, int weight, int dest);
+
+    void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
+
+    static double distance(double latitude1, double longitude1, double latitude2, double longitude2);
 };
 
 #endif //STCP_GRAPH_H
