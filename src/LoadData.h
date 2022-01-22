@@ -1,8 +1,17 @@
 #ifndef STCP_LOADDATA_H
 #define STCP_LOADDATA_H
 
-class LoadData {
+#include "Graph.h"
 
+class LoadData {
+    Graph buses;
+    void loadStops();
+    void loadLines();
+    void loadLinesInfo();
+
+public:
+    Graph getBuses();
+    void loadData();
 };
 
 #endif //STCP_LOADDATA_H
