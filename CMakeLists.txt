@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/dataset")
 
-add_executable(STCP src/main.cpp src/Graph.h src/LoadData.h src/LoadData.cpp)
+add_executable(STCP src/main.cpp src/MinHeap.h src/Graph.h src/LoadData.h src/LoadData.cpp)
 
 # Doxygen Build
 find_package(Doxygen)
