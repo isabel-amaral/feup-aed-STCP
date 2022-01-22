@@ -92,7 +92,7 @@ class Graph {
     map<string, int> stopsInfo;
 
 public:
-    Graph(int nodes);
+    Graph(int num);
     /**
      * adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha
      * @param src paragem de origem
@@ -103,13 +103,5 @@ public:
      */
     void addEdge(int src, string code, string name, int weight, int dest);
 };
-
-Graph::Graph(int num) : n(num), stops(num+1) {}
-
-void Graph::addEdge(int src, string code, string name, int weight, int dest) {
-    if (src < 1 || src > n || dest < 1 || dest > n)
-        return;
-    stops[src].adj.push_back({code, name, weight, dest});
-}
 
 #endif //STCP_GRAPH_H
