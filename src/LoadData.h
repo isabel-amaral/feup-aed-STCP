@@ -2,7 +2,6 @@
 #define STCP_LOADDATA_H
 
 #include "Graph.h"
-#include "Graph.h"
 #include <iostream>
 #include <fstream>
 #include <string>
