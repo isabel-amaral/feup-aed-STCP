@@ -3,7 +3,7 @@ project(STCP)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(STCP scr/main.cpp scr/Graph.h)
+add_executable(STCP src/main.cpp src/Graph.h)
 
 # Doxygen Build
 find_package(Doxygen)
