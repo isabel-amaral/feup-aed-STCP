@@ -50,11 +50,11 @@ class Graph {
         /**
          * latitude da paragem
          */
-        long latitude;
+        double latitude;
         /**
          * longitude da paragem
          */
-        long longitude;
+        double longitude;
 
         /**
          * lista dos segmentos de percurso que partem da paragem em questão
@@ -90,13 +90,9 @@ class Graph {
      * estrutura de dados que mapeia o nome de cada paragem ao respetivo inteiro usado para representar a paragem internamente
      */
     map<string, int> stopsInfo;
-    /**
-     * estrutura de dados que mapeia o nome de cada paragem ao respetivo inteiro usado para representar o código da mesma
-     */
-    map<string, string> lines;
 
 public:
-    Graph(int nodes);
+    Graph(int num);
     /**
      * adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha
      * @param src paragem de origem
@@ -106,6 +102,11 @@ public:
      * @param dest paragem de destino
      */
     void addEdge(int src, string code, string name, int weight, int dest);
+
+    void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
+
+    static double distance(double latitude1, double longitude1, double latitude2, double longitude2);
+
     /**
      * adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por lines
      * @param code código da linha a adicionar
@@ -113,18 +114,5 @@ public:
      */
     void addLine(string code, string name);
 };
-
-Graph::Graph(int num) : n(num), stops(num+1) {}
-
-void Graph::addEdge(int src, string code, string name, int weight, int dest) {
-    if (src < 1 || src > n || dest < 1 || dest > n)
-        return;
-    stops[src].adj.push_back({code, name, weight, dest});
-}
-
-
-void Graph::addLine(string code, string name) {
-    this->lines.insert({code, name});
-}
 
 #endif //STCP_GRAPH_H

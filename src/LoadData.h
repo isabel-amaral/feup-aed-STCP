@@ -2,6 +2,11 @@
 #define STCP_LOADDATA_H
 
 #include "Graph.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+using namespace std;
 
 class LoadData {
 private:
