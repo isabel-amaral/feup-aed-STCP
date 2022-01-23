@@ -39,6 +39,10 @@ void Graph::addEdge(int src, string code, double weight, int dest) {
     stops[src].adj.push_back({code, weight, dest});
 }
 
+void Graph::setWalkingDistance(double dist) {
+    this->walkingDistance = walkingDistance;
+}
+
 double Graph::calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
     double dLat = (latitude2 - latitude1) * M_PI / 180.0;
     double dLon = (longitude2 - longitude1) * M_PI / 180.0;

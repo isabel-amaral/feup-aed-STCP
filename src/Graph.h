@@ -90,6 +90,10 @@ class Graph {
      * estrutura de dados que mapeia o código de cada linha ao respetivo nome
      */
     map<string, string> linesInfo;
+    /**
+     * distânica máxima que o utilizador da STCP está disposta a andar para chega a uma paragem
+     */
+    double walkingDistance;
 
 public:
     Graph(int num);
@@ -112,6 +116,7 @@ public:
      * @param dest paragem de destino
      */
     void addEdge(int src, string code, double weight, int dest);
+    void setWalkingDistance(double dist);
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
 
     //TODO: bfs, devolve nº de paragens
