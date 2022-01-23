@@ -33,3 +33,6 @@ double Graph::distance(double latitude1, double longitude1, double latitude2, do
     return rad * c;
 }
 
+void Graph::addLine(string code, string name) {
+    this->lines.insert({code, name});
+}

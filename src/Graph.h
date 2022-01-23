@@ -90,6 +90,10 @@ class Graph {
      * estrutura de dados que mapeia o nome de cada paragem ao respetivo inteiro usado para representar a paragem internamente
      */
     map<string, int> stopsInfo;
+    /**
+     * estrutura de dados que mapeia o código de cada linha ao respetivo nome
+     */
+    map<string, string> lines;
 
 public:
     Graph(int num);
