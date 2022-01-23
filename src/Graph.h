@@ -98,7 +98,6 @@ public:
     const map<string, int>& getStopsInfo() const;
     const map<string, string>& getLinesInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
-    static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
      * adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por lines
      * @param code código da linha a adicionar
@@ -113,8 +112,25 @@ public:
      * @param dest paragem de destino
      */
     void addEdge(int src, string code, double weight, int dest);
+    static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
 
-    const vector<Node> &getStops() const;
+    //TODO: bfs, devolve nº de paragens
+    void getMinimumStopsPath(double latitude, double longitude);
+    //TODO: dijkstra com algumas restrições extra, devolve distância
+    void getShortestPathWithinSameLine(double latitude, double longitude);
+    //TODO: dijkstra clássico
+    void getShortestPathChangingLines(double latitude, double longitude);
+    //TODO: ?
+    void getLowestLineChanges(double latitude, double longitude);
+
+    //TODO: cout do nº de paragens e do caminho
+    void showMinimumStopsPath() const;
+    //TODO: cout da distância e do caminho
+    void showShortestPathWithinSameLine() const;
+    //TODO: cout da distânica, nº de vezes q muda de autocarro
+    void showShortestPathChangingLines() const;
+    //TODO: ?
+    void showLowestLineChanges() const;
 };
 
 #endif //STCP_GRAPH_H
