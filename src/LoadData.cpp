@@ -1,10 +1,10 @@
 #include "LoadData.h"
 using namespace std;
 
-LoadData::LoadData(const Graph& buses): buses(buses) {}
-
-Graph LoadData::getBuses() {
-    return buses;
+LoadData::LoadData(const Graph& buses): buses(buses) {
+    loadStops();
+    loadLines();
+    loadLinesInfo();
 }
 
 void LoadData::loadStops() {
@@ -99,10 +99,4 @@ void LoadData::loadLinesInfo() {
         out1 << "line_" << it->first << "_1" << ".csv";
         readInfoFromLine(out1.str(), it->first);
     }
-}
-
-void LoadData::loadData() {
-    loadStops();
-    loadLines();
-    loadLinesInfo();
 }

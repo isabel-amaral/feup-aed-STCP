@@ -18,9 +18,6 @@ private:
 
 public:
     LoadData(const Graph &buses);
-
-    Graph getBuses();
-    void loadData();
 };
 
 #endif //STCP_LOADDATA_H
