@@ -4,6 +4,7 @@
 #include "Graph.h"
 
 class LoadData {
+private:
     Graph buses;
     void loadStops();
     void loadLines();
