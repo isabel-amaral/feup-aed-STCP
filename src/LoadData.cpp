@@ -38,7 +38,6 @@ void LoadData::loadStops() {
 void LoadData::loadLines() {
     ifstream f;
     istringstream iss;
-    string line;
     string code, name;
 
     f.open("lines.csv");
