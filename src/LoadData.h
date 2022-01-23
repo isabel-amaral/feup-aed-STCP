@@ -18,6 +18,7 @@ private:
 
 public:
     LoadData(const Graph &buses);
+    const Graph& getBuses() const;
 };
 
 #endif //STCP_LOADDATA_H

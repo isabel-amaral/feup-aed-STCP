@@ -7,6 +7,10 @@ LoadData::LoadData(const Graph& buses): buses(buses) {
     loadLinesInfo();
 }
 
+const Graph& LoadData::getBuses() const {
+    return buses;
+}
+
 void LoadData::loadStops() {
     ifstream f;
     string code, name, zone, text, tempText;
@@ -75,7 +79,7 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode) {
         s = buses.getStopsInfo().at(sourceCode);
         d = buses.getStopsInfo().at(destCode);
         distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
-                                           buses.getStopLatitude(d), buses.getStopLatitude(d));
+                                           buses.getStopLatitude(d), buses.getStopLongitude(d));
         buses.addEdge(s, lineCode, distance, d);
         sourceCode = destCode;
     }
