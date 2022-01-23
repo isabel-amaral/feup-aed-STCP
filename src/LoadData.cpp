@@ -1,24 +1,23 @@
 #include "LoadData.h"
-#include "iostream"
-#include "sstream"
-#include <fstream>
-
 using namespace std;
+
+LoadData::LoadData(const Graph& buses): buses(buses) {}
 
 Graph LoadData::getBuses() {
     return buses;
 }
 
 void LoadData::loadStops() {
-    buses = Graph(2487);
     ifstream f;
     string code, name, zone, text, tempText;
     double latitude, longitude;
 
     f.open("stops.csv");
 
-    if (!f.is_open())
+    if (!f.is_open()) {
         cout << "O ficheiro nao existe." << endl;
+        return;
+    }
     f.ignore(LONG_MAX, '\n');
 
     while (getline(f, text)){
@@ -37,13 +36,14 @@ void LoadData::loadStops() {
 
 void LoadData::loadLines() {
     ifstream f;
-    istringstream iss;
     string line;
     string code, name;
 
     f.open("lines.csv");
-    if(!f.is_open())
+    if(!f.is_open()) {
         cout << "Ficheiro nao existe" << endl;
+        return;
+    }
 
     f.ignore(LONG_MAX, '\n');
     while(!f.eof()) {
@@ -51,12 +51,54 @@ void LoadData::loadLines() {
         getline(f, name, '\n');
         buses.addLine(code, name);
     }
-
     f.close();
 }
 
+void LoadData::readInfoFromLine(const string& filename, string lineCode) {
+    ifstream f;
+    string numStops;
+    f.open(filename);
+    if (!f.is_open()) {
+        cout << "O ficheiro " << filename << " nao existe." << endl;
+        return;
+    }
+    getline(f, numStops);
+
+    int s, d;
+    string sourceCode, destCode;
+    double distance;
+
+    getline(f, sourceCode);
+    string startingStop = sourceCode;
+    for (int i = 0; i < stoi(numStops)-1; i++) {
+        getline(f, destCode);
+        s = buses.getStopsInfo().at(sourceCode);
+        d = buses.getStopsInfo().at(destCode);
+        distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
+                                           buses.getStopLatitude(d), buses.getStopLatitude(d));
+        buses.addEdge(s, lineCode, distance, d);
+        sourceCode = destCode;
+    }
+
+    //circular lines
+    if ((lineCode == "300" || lineCode == "301" || lineCode == "302" || lineCode == "303") && stoi(numStops) != 0) {
+        s = buses.getStopsInfo().at(sourceCode);
+        d = buses.getStopsInfo().at(startingStop);
+        distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
+                                            buses.getStopLatitude(d), buses.getStopLatitude(d));
+        buses.addEdge(s, lineCode, distance, d);
+    }
+}
+
 void LoadData::loadLinesInfo() {
-    //TODO
+    map<string, string>::const_iterator it;
+    for (it = buses.getLinesInfo().begin(); it != buses.getLinesInfo().end(); it++) {
+        ostringstream out0, out1;
+        out0 << "line_" << it->first << "_0" << ".csv";
+        readInfoFromLine(out0.str(), it->first);
+        out1 << "line_" << it->first << "_1" << ".csv";
+        readInfoFromLine(out1.str(), it->first);
+    }
 }
 
 void LoadData::loadData() {
@@ -64,4 +106,3 @@ void LoadData::loadData() {
     loadLines();
     loadLinesInfo();
 }
-

@@ -3,10 +3,26 @@
 
 Graph::Graph(int num) : n(num), stops(num+1) {}
 
-void Graph::addEdge(int src, string code, string name, int weight, int dest) {
+double Graph::getStopLatitude(int node) const {
+    return stops[node].latitude;
+}
+
+double Graph::getStopLongitude(int node) const {
+    return stops[node].longitude;
+}
+
+const map<string, int>& Graph::getStopsInfo() const {
+    return stopsInfo;
+}
+
+const map<string, string>& Graph::getLinesInfo() const {
+    return linesInfo;
+}
+
+void Graph::addEdge(int src, string code, double weight, int dest) {
     if (src < 1 || src > n || dest < 1 || dest > n)
         return;
-    stops[src].adj.push_back({code, name, weight, dest});
+    stops[src].adj.push_back({code, weight, dest});
 }
 
 void Graph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
@@ -19,8 +35,11 @@ void Graph::setNode(const string &code, const string &name, const string &zone, 
     stops.at(nodeIndex).longitude = longitude;
 }
 
-double Graph::distance(double latitude1, double longitude1, double latitude2, double longitude2) {
+void Graph::addLine(string code, string name) {
+    this->linesInfo.insert({code, name});
+}
 
+double Graph::calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
     double dLat = (latitude2 - latitude1) * M_PI / 180.0;
     double dLon = (longitude2 - longitude1) * M_PI / 180.0;
 
@@ -31,8 +50,4 @@ double Graph::distance(double latitude1, double longitude1, double latitude2, do
     double rad = 6371;
     double c = 2 * asin(sqrt(a));
     return rad * c;
-}
-
-void Graph::addLine(string code, string name) {
-    this->lines.insert({code, name});
 }

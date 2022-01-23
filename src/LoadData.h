@@ -14,8 +14,11 @@ private:
     void loadStops();
     void loadLines();
     void loadLinesInfo();
+    void readInfoFromLine(const string& filename, string lineCode);
 
 public:
+    LoadData(const Graph &buses);
+
     Graph getBuses();
     void loadData();
 };

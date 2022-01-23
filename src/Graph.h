@@ -18,13 +18,9 @@ class Graph {
          */
         string lineCode;
         /**
-         * nome da linha de autocarro
-         */
-        string lineName;
-        /**
          * distância entre duas paragens consecutivas de uma linha
          */
-        int weight;
+        double weight;
         /**
          * paragem de destino
          */
@@ -59,12 +55,12 @@ class Graph {
         /**
          * lista dos segmentos de percurso que partem da paragem em questão
          */
-        list<Edge> adj; //The list of outgoing edges (to adjacent nodes)
+        list<Edge> adj;
         /**
          * atributo de auxílio ao algoritmo de Djikstra:
          * distância da paragem à origem do percurso
          */
-        int dist;
+        double dist;
         /**
          * atributo de auxílio ao algoritmo de Djikstra:
          * paragem predecedente da paragem em questão no percurso a ser considerado
@@ -87,36 +83,38 @@ class Graph {
      */
     vector<Node> stops;
     /**
-     * estrutura de dados que mapeia o nome de cada paragem ao respetivo inteiro usado para representar a paragem internamente
+     * estrutura de dados que mapeia o código de cada paragem ao respetivo inteiro usado para representar a paragem internamente
      */
     map<string, int> stopsInfo;
     /**
      * estrutura de dados que mapeia o código de cada linha ao respetivo nome
      */
-    map<string, string> lines;
+    map<string, string> linesInfo;
 
 public:
     Graph(int num);
-    /**
-     * adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha
-     * @param src paragem de origem
-     * @param code código da linha a que pertence o segmento de percurso
-     * @param name nome da linha a que pertence o segmento de percurso
-     * @param weight distância entre as duas paragens a ser consideradas
-     * @param dest paragem de destino
-     */
-    void addEdge(int src, string code, string name, int weight, int dest);
-
+    double getStopLatitude(int node) const;
+    double getStopLongitude(int node) const;
+    const map<string, int>& getStopsInfo() const;
+    const map<string, string>& getLinesInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
-
-    static double distance(double latitude1, double longitude1, double latitude2, double longitude2);
-
+    static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
      * adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por lines
      * @param code código da linha a adicionar
      * @param name nome da linha a adicionar
      */
     void addLine(string code, string name);
+    /**
+     * adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha
+     * @param src paragem de origem
+     * @param code código da linha a que pertence o segmento de percurso
+     * @param weight distância entre as duas paragens a ser consideradas
+     * @param dest paragem de destino
+     */
+    void addEdge(int src, string code, double weight, int dest);
+
+    const vector<Node> &getStops() const;
 };
 
 #endif //STCP_GRAPH_H

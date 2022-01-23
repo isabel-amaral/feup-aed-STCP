@@ -1,7 +1,10 @@
 #include <iostream>
+#include "LoadData.h"
 
 using namespace std;
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Graph graph(2487);
+    LoadData loadData(graph);
+    loadData.loadData();
     return 0;
 }
