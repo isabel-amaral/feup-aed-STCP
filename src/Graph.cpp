@@ -71,7 +71,7 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
     double a = pow(sin(dLat / 2), 2) + pow(sin(dLon / 2), 2) * cos(latitude1) * cos(latitude2);
     double rad = 6371;
     double c = 2 * asin(sqrt(a));
-    return rad * c;
+    return rad * c * 1000;
 }
 
 void Graph::getMinimumStopsPath(double latitude, double longitude) {
@@ -96,6 +96,7 @@ list<int> Graph::findClosestStops(double latitude, double longitude) {
     list<int> closestStops;
     for(int v = 1; v <= stops.size(); v++) {
         stops[v].visited = false;
+        double x = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
         if(calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
             closestStops.push_back(v);
@@ -111,7 +112,7 @@ int Graph::findClosestStop(double latitude, double longitude) {
     double minDistance = LONG_MAX;
     int closestStopIndex;
     for(int v = 1; v <= stops.size(); v++) {
-        int distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
+        double distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
         if(distance < minDistance) {
             minDistance = distance;
             closestStopIndex = v;
