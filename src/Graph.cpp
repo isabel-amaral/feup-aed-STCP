@@ -56,9 +56,65 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
     return rad * c;
 }
 
-void Graph::getMinimumStopsPath(double latitude, double longitude) {
-    //TODO
+void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
+    for(int v=1; v<=n; v++) stops[v].visited = false;
+
+    list<int> stopsNearStart; //TODO: Chamar a funcao que calcula as paragens mais proximas
+    queue<int> auxStopsNearStart;
+    list<int> stopsNearEnd;  //TODO: Chamar a funcao que calcula as paragens mais proximas
+    list<int> result;
+    int dist = 0;
+
+    for (int i = 1; i < stops.size(); i++){
+        stops[i].visited = false;
+        stops[i].pred = -1;
+    }
+
+    for (auto i=stopsNearStart.begin(); i != stopsNearStart.end(); i++){
+        stops[*i].dist = 0;
+        stops[*i].visited = true;
+        stops[*i].pred = 0;
+        auxStopsNearStart.push(*i);
+    }
+
+    for (auto i=stopsNearEnd.begin(); i != stopsNearEnd.end(); i++) stops[*i].dist = INT_MAX;
+
+    while (!auxStopsNearStart.empty()) { // while there are still unprocessed nodes
+        int u = auxStopsNearStart.front(); auxStopsNearStart.pop(); // remove first element of q
+        for (auto e : stops[u]. adj) {
+            int w = e.dest;
+            if (!stops[w].visited) { // new node!
+                auxStopsNearStart.push(w);
+                stops[w].visited = true;
+                stops[w].dist = stops[u].dist + 1;
+                stops[w].pred = u;
+            }
+        }
+    }
+
+    //Determinar qual das paragens mais proximas do destino tem menor distância
+    int lastMinDist = INT_MAX;
+    int lastStop;
+    for (auto i = stopsNearEnd.begin(); i != stopsNearEnd.end(); i++){
+        if (stops[*i].visited && stops[*i].dist < lastMinDist){
+            lastMinDist = stops[*i].dist;
+            lastStop = *i;
+        }
+    }
+
+    result.push_front(lastStop);
+    int parent = stops.at(lastStop).pred;
+    result.push_front(parent);
+
+    while (parent != -1 && parent != 0){
+        parent = stops.at(parent).pred;
+        result.push_front(parent);
+    }
+
+    if (result.front() == -1)  result.clear();
+
     showMinimumStopsPath();
+
 }
 
 void Graph::showMinimumStopsPath() const {

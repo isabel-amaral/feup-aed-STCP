@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <queue>
 using namespace std;
 
 class Graph {
@@ -120,7 +121,7 @@ public:
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
 
     //TODO: bfs, devolve nº de paragens
-    void getMinimumStopsPath(double latitude, double longitude);
+    void getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2);
     //TODO: dijkstra com algumas restrições extra, devolve distância
     void getShortestPathWithinSameLine(double latitude, double longitude);
     //TODO: dijkstra clássico
