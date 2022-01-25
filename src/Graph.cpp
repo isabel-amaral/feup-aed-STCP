@@ -1,8 +1,11 @@
 #include <cmath>
+#include <queue>
 #include "Graph.h"
 #include "MinHeap.h"
 
-Graph::Graph(int num) : n(num), stops(num+1) {}
+Graph::Graph(int num) : n(num), stops(num+1) {
+    this->walkingDistance = 0;
+}
 
 double Graph::getStopLatitude(int node) const {
     return stops[node].latitude;
@@ -41,7 +44,21 @@ void Graph::addEdge(int src, string code, double weight, int dest) {
 }
 
 void Graph::setWalkingDistance(double dist) {
-    this->walkingDistance = walkingDistance;
+    this->walkingDistance = dist;
+
+    for (int n = 1; n < stops.size()-1; n++) {
+        list<Edge>::iterator it = stops[n].adj.begin();
+        for (; it != stops[n].adj.end(); it++) {
+            if (it->lineCode == "")
+                it = stops[n].adj.erase(it);
+        }
+
+        for (int s = n+1; s < stops.size(); s++) {
+            double distance = calculateDistance(stops[n].latitude, stops[n].longitude, stops[s].latitude, stops[s].longitude);
+            if (distance <= walkingDistance)
+                addEdge(n, "", distance, s);
+        }
+    }
 }
 
 double Graph::calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
