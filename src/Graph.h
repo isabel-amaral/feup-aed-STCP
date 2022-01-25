@@ -91,7 +91,7 @@ class Graph {
      */
     map<string, string> linesInfo;
     /**
-     * distânica máxima que o utilizador da STCP está disposta a andar para chega a uma paragem
+     * distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem
      */
     double walkingDistance;
 
@@ -103,7 +103,7 @@ public:
     const map<string, string>& getLinesInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
     /**
-     * adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por lines
+     * adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por linesInfo
      * @param code código da linha a adicionar
      * @param name nome da linha a adicionar
      */
@@ -118,13 +118,15 @@ public:
     void addEdge(int src, string code, double weight, int dest);
     void setWalkingDistance(double dist);
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
+    list<int> findClosestStops(double latitude, double longitude);
+    int findClosestStop(double latitude, double longitude);
 
     //TODO: bfs, devolve nº de paragens
     void getMinimumStopsPath(double latitude, double longitude);
     //TODO: dijkstra com algumas restrições extra, devolve distância
     void getShortestPathWithinSameLine(double latitude, double longitude);
     //TODO: dijkstra clássico
-    void getShortestPathChangingLines(double latitude, double longitude);
+    void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     //TODO: ?
     void getLowestLineChanges(double latitude, double longitude);
 
@@ -133,7 +135,7 @@ public:
     //TODO: cout da distância e do caminho
     void showShortestPathWithinSameLine() const;
     //TODO: cout da distânica, nº de vezes q muda de autocarro
-    void showShortestPathChangingLines() const;
+    void showShortestPathChangingLines(list<int> path) const;
     //TODO: ?
     void showLowestLineChanges() const;
 };
