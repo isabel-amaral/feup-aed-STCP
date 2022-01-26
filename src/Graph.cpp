@@ -124,7 +124,6 @@ list<int> Graph::findClosestStops(double latitude, double longitude) {
     list<int> closestStops;
     for(int v = 1; v <= stops.size(); v++) {
         stops[v].visited = false;
-        double x = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
         if(calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
             closestStops.push_back(v);
@@ -156,6 +155,12 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
         q.insert(v, stops[v].dist);
     }
 
+    int originIndex = findClosestStop(latitude1, longitude1);
+
+    stops[originIndex].dist = 0;
+    q.decreaseKey(originIndex, 0);
+    stops[originIndex].pred = originIndex;
+
     while(q.getSize() > 0) {
         int u = q.removeMin();
         stops[u].visited = true;
@@ -172,7 +177,7 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
 
     list<int> path;
     int destIndex = findClosestStop(latitude2, longitude2);
-    if (!stops[destIndex].dist == LONG_MAX) {
+    if (stops[destIndex].dist != LONG_MAX) {
         path.push_back(destIndex);
         int v = destIndex;
         while (v != findClosestStop(latitude1, latitude2)) {
