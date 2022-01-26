@@ -110,11 +110,11 @@ list<int> Graph::findClosestStops(double latitude, double longitude) {
 int Graph::findClosestStop(double latitude, double longitude) {
     double minDistance = LONG_MAX;
     int closestStopIndex;
-    for(int v = 1; v <= stops.size(); v++) {
-        double distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
+    for(int v = 0; v <= stops.size(); v++) {
+        double distance = calculateDistance(latitude, longitude, stops[v+1].latitude, stops[v+1].longitude);
         if(distance < minDistance) {
             minDistance = distance;
-            closestStopIndex = v;
+            closestStopIndex = v + 1;
         }
     }
     return closestStopIndex;
@@ -123,15 +123,9 @@ int Graph::findClosestStop(double latitude, double longitude) {
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
     MinHeap<int, int> q(stops.size(), 0);
     list<int> closestStops = findClosestStops(latitude1, longitude1);
-    for(int v = 1; v <= closestStops.size(); v++) {
-        q.insert(v, stops[v].dist);
+    for(int v = 0; v <= closestStops.size(); v++) {
+        q.insert(v, stops[v + 1].dist);
     }
-
-    int originIndex = findClosestStop(latitude1, longitude1);
-
-    stops[originIndex].dist = 0;
-    q.decreaseKey(originIndex, 0);
-    stops[originIndex].pred = originIndex;
 
     while(q.getSize() > 0) {
         int u = q.removeMin();
