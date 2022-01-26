@@ -17,7 +17,7 @@ private:
     void readInfoFromLine(const string& filename, string lineCode);
 
 public:
-    LoadData(Graph &buses);
+    LoadData(const Graph &buses);
     const Graph& getBuses() const;
 };
 
