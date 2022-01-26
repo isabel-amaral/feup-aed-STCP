@@ -1,5 +1,6 @@
 #include <cmath>
 #include <queue>
+#include <iostream>
 #include "Graph.h"
 #include "MinHeap.h"
 
@@ -45,18 +46,15 @@ void Graph::addEdge(int src, string code, double weight, int dest) {
 
 void Graph::setWalkingDistance(double dist) {
     this->walkingDistance = dist;
+}
 
-    for (int n = 1; n < stops.size()-1; n++) {
-        list<Edge>::iterator it = stops[n].adj.begin();
-        for (; it != stops[n].adj.end(); it++) {
-            if (it->lineCode == "")
-                it = stops[n].adj.erase(it);
-        }
-
-        for (int s = n+1; s < stops.size(); s++) {
-            double distance = calculateDistance(stops[n].latitude, stops[n].longitude, stops[s].latitude, stops[s].longitude);
-            if (distance <= walkingDistance)
-                addEdge(n, "", distance, s);
+void Graph::addWalkingEdges(){
+    int maxDistance = 50;
+    for (int i = 1; i < stops.size()-1; i++) {
+        for (int s = i+1; s < stops.size(); s++) {
+            double distance = calculateDistance(stops[i].latitude, stops[i].longitude, stops[s].latitude, stops[s].longitude);
+            if (distance <= maxDistance)
+                addEdge(i, "", distance, s);
         }
     }
 }
@@ -75,68 +73,42 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
 }
 
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
-    for(int v=1; v<=n; v++) stops[v].visited = false;
 
-    list<int> stopsNearStart; //TODO: Chamar a funcao que calcula as paragens mais proximas
-    queue<int> auxStopsNearStart;
-    list<int> stopsNearEnd;  //TODO: Chamar a funcao que calcula as paragens mais proximas
+    list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
+    list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     list<int> result;
-    int dist = 0;
+    int lastMinDist = INT_MAX, start = 0, end = 0;
 
-    for (int i = 1; i < stops.size(); i++){
-        stops[i].visited = false;
-        stops[i].pred = -1;
-    }
-
-    for (auto i=stopsNearStart.begin(); i != stopsNearStart.end(); i++){
-        stops[*i].dist = 0;
-        stops[*i].visited = true;
-        stops[*i].pred = 0;
-        auxStopsNearStart.push(*i);
-    }
-
-    for (auto i=stopsNearEnd.begin(); i != stopsNearEnd.end(); i++) stops[*i].dist = INT_MAX;
-
-    while (!auxStopsNearStart.empty()) { // while there are still unprocessed nodes
-        int u = auxStopsNearStart.front(); auxStopsNearStart.pop(); // remove first element of q
-        for (auto e : stops[u]. adj) {
-            int w = e.dest;
-            if (!stops[w].visited) { // new node!
-                auxStopsNearStart.push(w);
-                stops[w].visited = true;
-                stops[w].dist = stops[u].dist + 1;
-                stops[w].pred = u;
+    for (int & i : stopsNearStart){
+        for (int & j : stopsNearEnd){
+            bfs(i, j);
+            if (stops[j].visited && stops[j].dist < lastMinDist){
+                lastMinDist = stops[j].dist;
+                start = i;
+                end = j;
             }
         }
     }
 
-    //Determinar qual das paragens mais proximas do destino tem menor distância
-    int lastMinDist = INT_MAX;
-    int lastStop;
-    for (auto i = stopsNearEnd.begin(); i != stopsNearEnd.end(); i++){
-        if (stops[*i].visited && stops[*i].dist < lastMinDist){
-            lastMinDist = stops[*i].dist;
-            lastStop = *i;
+    if (start != 0 && end != 0) {    // Se foi encontrado um caminho
+        bfs(start, end);
+
+        result.push_front(end);
+        int parent = stops.at(end).pred;
+
+        while (parent != 0) {   // Enquanto não chegar a paragem inicial que é a única que possui parent = 0
+            result.push_front(parent);
+            parent = stops.at(parent).pred;
         }
     }
-
-    result.push_front(lastStop);
-    int parent = stops.at(lastStop).pred;
-    result.push_front(parent);
-
-    while (parent != -1 && parent != 0){
-        parent = stops.at(parent).pred;
-        result.push_front(parent);
-    }
-
-    if (result.front() == -1)  result.clear();
-
-    showMinimumStopsPath();
-
+    showMinimumStopsPath(result);
 }
 
-void Graph::showMinimumStopsPath() const {
+void Graph::showMinimumStopsPath(list<int> path) const {
     //TODO
+    for (auto i: path){
+        std::cout << stops[i].stopCode << std::endl;
+    }
 }
 
 void Graph::getShortestPathWithinSameLine(double latitude, double longitude) {
@@ -223,4 +195,31 @@ void Graph::getLowestLineChanges(double latitude, double longitude) {
 
 void Graph::showLowestLineChanges() const {
 
+}
+
+void Graph::bfs(int a, int b) {
+    queue<int> aux;
+
+    for (int i = 1; i < stops.size(); i++){
+        stops[i].visited = false;
+        stops[i].pred = -1;
+    }
+    stops[b].dist = INT_MAX;
+    stops[a].dist = 0;
+    stops[a].visited = true;
+    stops[a].pred = 0;
+    aux.push(a);
+
+    while (!aux.empty()) { // while there are still unprocessed nodes
+        int u = aux.front(); aux.pop(); // remove first element of q
+        for (auto e : stops[u]. adj) {
+            int w = e.dest;
+            if (!stops[w].visited) { // new node!
+                aux.push(w);
+                stops[w].visited = true;
+                stops[w].dist = stops[u].dist + 1;
+                stops[w].pred = u;
+            }
+        }
+    }
 }
