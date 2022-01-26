@@ -73,7 +73,6 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
 }
 
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
-
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     list<int> result;
