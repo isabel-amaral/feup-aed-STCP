@@ -98,6 +98,7 @@ class Graph {
     double walkingDistance;
 
 public:
+    Graph();
     Graph(int num);
     string getStopName(int node) const;
     string getStopZone(int node) const;
@@ -128,8 +129,6 @@ public:
 
     //TODO: bfs, devolve nº de paragens
     void getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO: dijkstra com algumas restrições extra, devolve distância
-    void getShortestPathWithinSameLine(double latitude, double longitude);
     //TODO: dijkstra clássico
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     //TODO: ?
@@ -137,8 +136,6 @@ public:
 
     //TODO: cout do nº de paragens e do caminho
     void showMinimumStopsPath(list<int> path) const;
-    //TODO: cout da distância e do caminho
-    void showShortestPathWithinSameLine() const;
     //TODO: cout da distânica, nº de vezes q muda de autocarro
     void showShortestPathChangingLines(list<int> path) const;
     //TODO: ?

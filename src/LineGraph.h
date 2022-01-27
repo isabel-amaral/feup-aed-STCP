@@ -1,6 +1,7 @@
 #ifndef STCP_LINEGRAPH_H
 #define STCP_LINEGRAPH_H
 
+#include "MinHeap.h"
 #include <string>
 #include <vector>
 #include <list>

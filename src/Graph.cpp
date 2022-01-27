@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Graph.h"
 
+Graph::Graph() {}
+
 Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;
 }
@@ -120,26 +122,16 @@ void Graph::showMinimumStopsPath(list<int> path) const {
     }
 }
 
-void Graph::getShortestPathWithinSameLine(double latitude, double longitude) {
-    //TODO
-    showShortestPathWithinSameLine();
-}
-
-void Graph::showShortestPathWithinSameLine() const {
-
-}
-
 MinHeap<int, int> Graph::findClosestStops(double latitude, double longitude) {
     MinHeap<int, int> closestStops(stops.size(), -1);
-    for(int v = 1; v <= stops.size(); v++) {
+    for (int v = 1; v <= stops.size(); v++) {
         stops[v].visited = false;
-        if(calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
+        if (calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
             closestStops.insert(v, stops[v].dist);
         }
-        else {
+        else
             stops[v].dist = LONG_MAX;
-        }
     }
     return closestStops;
 }
