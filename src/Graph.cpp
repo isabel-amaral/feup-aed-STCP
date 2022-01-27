@@ -74,13 +74,17 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
 }
 
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
-    list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
-    list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
+
+    MinHeap<int, int> stopsNearStart = findClosestStops(latitude1, longitude1);
+    MinHeap<int, int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     vector<int> result;
     int lastMinDist = INT_MAX, start = 0, end = 0;
 
-    for (int & i : stopsNearStart){
-        for (int & j : stopsNearEnd){
+    while (stopsNearStart.getSize() != 0) {
+        int i = stopsNearStart.removeMin();
+        MinHeap<int, int> aux = stopsNearEnd;
+        while (stopsNearEnd.getSize() != 0) {
+            int j = aux.removeMin();
             bfs(i, j);
             if (stops[j].visited && stops[j].dist < lastMinDist){
                 lastMinDist = stops[j].dist;
@@ -152,13 +156,13 @@ void Graph::showShortestPathWithinSameLine() const {
 
 }
 
-list<int> Graph::findClosestStops(double latitude, double longitude) {
-    list<int> closestStops;
+MinHeap<int, int> Graph::findClosestStops(double latitude, double longitude) {
+    MinHeap<int, int> closestStops(stops.size(), -1);
     for(int v = 1; v <= stops.size(); v++) {
         stops[v].visited = false;
         if(calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
-            closestStops.push_back(v);
+            closestStops.insert(v, stops[v].dist);
         }
         else {
             stops[v].dist = LONG_MAX;
@@ -181,27 +185,22 @@ int Graph::findClosestStop(double latitude, double longitude) {
 }
 
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
-    MinHeap<int, int> q(stops.size(), 0);
-    list<int> closestStops = findClosestStops(latitude1, longitude1);
-    for(int v = 1; v <= closestStops.size(); v++) {
-        q.insert(v, stops[v].dist);
-    }
+    MinHeap<int, int> closestStops = findClosestStops(latitude1, longitude1);
 
     int originIndex = findClosestStop(latitude1, longitude1);
-
     stops[originIndex].dist = 0;
-    q.decreaseKey(originIndex, 0);
+    closestStops.decreaseKey(originIndex, 0);
     stops[originIndex].pred = originIndex;
 
-    while(q.getSize() > 0) {
-        int u = q.removeMin();
+    while(closestStops.getSize() > 0) {
+        int u = closestStops.removeMin();
         stops[u].visited = true;
         for (Edge e: stops[u].adj) {
             int v = e.dest;
             int w = e.weight;
             if (!stops[v].visited && stops[u].dist + w < stops[v].dist) {
                 stops[v].dist = stops[u].dist + w;
-                q.decreaseKey(v, stops[v].dist);
+                closestStops.decreaseKey(v, stops[v].dist);
                 stops[v].pred = u;
             }
         }
