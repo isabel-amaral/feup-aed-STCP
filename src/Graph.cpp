@@ -191,7 +191,9 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
 }
 
 void Graph::showShortestPathChangingLines(list<int> path) const {
-
+    for (auto i: path){
+        std::cout << stops[i].stopCode << std::endl;
+    }
 }
 
 void Graph::getLowestLineChanges(double latitude, double longitude) {
