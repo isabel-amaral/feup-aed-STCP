@@ -1,6 +1,7 @@
 #ifndef STCP_GRAPH_H
 #define STCP_GRAPH_H
 
+#include "MinHeap.h"
 #include <string>
 #include <vector>
 #include <list>
@@ -120,7 +121,7 @@ public:
     void setWalkingDistance(double dist);
     void addWalkingEdges();
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-    list<int> findClosestStops(double latitude, double longitude);
+    MinHeap<int, int> findClosestStops(double latitude, double longitude);
     int findClosestStop(double latitude, double longitude);
 
     //TODO: bfs, devolve nº de paragens

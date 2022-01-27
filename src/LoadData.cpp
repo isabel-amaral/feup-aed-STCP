@@ -1,11 +1,11 @@
 #include "LoadData.h"
 using namespace std;
 
-LoadData::LoadData(Graph& buses): buses(buses) {
+LoadData::LoadData(const Graph& buses): buses(buses) {
     loadStops();
     loadLines();
     loadLinesInfo();
-    buses.addWalkingEdges();
+    this->buses.addWalkingEdges();
 }
 
 const Graph& LoadData::getBuses() const {
