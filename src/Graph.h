@@ -133,7 +133,7 @@ public:
     void getLowestLineChanges(double latitude, double longitude);
 
     //TODO: cout do nº de paragens e do caminho
-    void showMinimumStopsPath(list<int> path) const;
+    void showMinimumStopsPath(vector<int> path) const;
     //TODO: cout da distância e do caminho
     void showShortestPathWithinSameLine() const;
     //TODO: cout da distânica, nº de vezes q muda de autocarro

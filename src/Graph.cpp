@@ -51,10 +51,11 @@ void Graph::setWalkingDistance(double dist) {
 void Graph::addWalkingEdges(){
     int maxDistance = 50;
     for (int i = 1; i < stops.size()-1; i++) {
-        for (int s = i+1; s < stops.size(); s++) {
+        for (int s = 1; s < stops.size(); s++) {
             double distance = calculateDistance(stops[i].latitude, stops[i].longitude, stops[s].latitude, stops[s].longitude);
-            if (distance <= maxDistance)
+            if (distance <= maxDistance && i != s){
                 addEdge(i, "", distance, s);
+            }
         }
     }
 }
@@ -75,7 +76,7 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
-    list<int> result;
+    vector<int> result;
     int lastMinDist = INT_MAX, start = 0, end = 0;
 
     for (int & i : stopsNearStart){
@@ -92,22 +93,54 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
     if (start != 0 && end != 0) {    // Se foi encontrado um caminho
         bfs(start, end);
 
-        result.push_front(end);
+        result.insert(result.begin(),end);
         int parent = stops.at(end).pred;
 
         while (parent != 0) {   // Enquanto não chegar a paragem inicial que é a única que possui parent = 0
-            result.push_front(parent);
+            result.insert(result.begin(), parent);
             parent = stops.at(parent).pred;
         }
     }
     showMinimumStopsPath(result);
 }
 
-void Graph::showMinimumStopsPath(list<int> path) const {
+void Graph::showMinimumStopsPath(vector<int> path) const {
     //TODO
-    for (auto i: path){
-        std::cout << stops[i].stopCode << std::endl;
+
+    for (auto el : path){
+        cout << stops[el].stopCode << endl;
     }
+
+    int lastStop = path.back();
+    string lastLineBeforeWalking;
+
+    if (!path.empty()){
+        cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
+        for (auto i = 0; i < path.size() -1; i++ ){
+            int index = path[i];
+            for (const auto& ad : stops[index].adj){
+                if(ad.dest == path[i+1]){
+                    if(ad.lineCode != ""){
+                        cout << ad.lineCode << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
+                        lastLineBeforeWalking = ad.lineCode;
+                        break;
+                    }
+
+                    else{
+                        int nextStop = path[i+1];
+                        cout << lastLineBeforeWalking << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
+                        cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
+                        break;
+                    }
+                }
+            }
+        }
+
+        cout << lastLineBeforeWalking << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
+        cout << "Caminhe ate ao seu destino" << endl;
+    }
+
+
 }
 
 void Graph::getShortestPathWithinSameLine(double latitude, double longitude) {
