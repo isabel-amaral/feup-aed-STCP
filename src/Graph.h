@@ -99,6 +99,8 @@ class Graph {
 
 public:
     Graph(int num);
+    string getStopName(int node) const;
+    string getStopZone(int node) const;
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;
     const map<string, int>& getStopsInfo() const;

@@ -16,6 +16,10 @@ double LineGraph::getStopLongitude(int node) const {
     return this->stops[node].longitude;
 }
 
+const map<string, int>& LineGraph::getStopsInfo() const {
+    return stopsInfo;
+}
+
 void LineGraph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
     int nodeIndex = stopsInfo.size() + 1;
     stopsInfo.insert({code,nodeIndex});
@@ -26,7 +30,7 @@ void LineGraph::setNode(const string &code, const string &name, const string &zo
     stops.at(nodeIndex).longitude = longitude;
 }
 
-void LineGraph::addEdge(int src, string code, double weight, int dest) {
+void LineGraph::addEdge(int src, double weight, int dest) {
     if (src < 1 || src > n || dest < 1 || dest > n)
         return;
     stops[src].adj.push_back({weight, dest});

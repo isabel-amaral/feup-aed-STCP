@@ -2,10 +2,17 @@
 #include <queue>
 #include <iostream>
 #include "Graph.h"
-#include "MinHeap.h"
 
 Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;
+}
+
+string Graph::getStopName(int node) const {
+    return stops[node].stopName;
+}
+
+string Graph::getStopZone(int node) const {
+    return stops[node].zone;
 }
 
 double Graph::getStopLatitude(int node) const {

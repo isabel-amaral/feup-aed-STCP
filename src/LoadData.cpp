@@ -1,7 +1,7 @@
 #include "LoadData.h"
 using namespace std;
 
-LoadData::LoadData(const Graph& buses): buses(buses) {
+LoadData::LoadData(const Graph& buses, const list<LineGraph>& lines): buses(buses),  lines(lines) {
     loadStops();
     loadLines();
     loadLinesInfo();
@@ -10,6 +10,10 @@ LoadData::LoadData(const Graph& buses): buses(buses) {
 
 const Graph& LoadData::getBuses() const {
     return buses;
+}
+
+const list<LineGraph>& LoadData::getLines() const {
+    return lines;
 }
 
 void LoadData::loadStops() {
@@ -59,7 +63,7 @@ void LoadData::loadLines() {
     f.close();
 }
 
-void LoadData::readInfoFromLine(const string& filename, string lineCode) {
+void LoadData::readInfoFromLine(const string& filename, string lineCode, string lineName) {
     ifstream f;
     string numStops;
     f.open(filename);
@@ -68,6 +72,7 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode) {
         return;
     }
     getline(f, numStops);
+    LineGraph line(lineCode, lineName, stoi(numStops));
 
     int s, d;
     string sourceCode, destCode;
@@ -82,6 +87,13 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode) {
         distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
                                            buses.getStopLatitude(d), buses.getStopLongitude(d));
         buses.addEdge(s, lineCode, distance, d);
+
+        line.setNode(sourceCode, buses.getStopName(s),buses.getStopZone(s),
+                     buses.getStopLatitude(s), buses.getStopLongitude(s));
+        line.setNode(destCode, buses.getStopName(d),buses.getStopZone(d),
+                     buses.getStopLatitude(d), buses.getStopLongitude(d));
+        line.addEdge(line.getStopsInfo().at(sourceCode), distance, line.getStopsInfo().at(destCode));
+
         sourceCode = destCode;
     }
 
@@ -92,7 +104,13 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode) {
         distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
                                             buses.getStopLatitude(d), buses.getStopLatitude(d));
         buses.addEdge(s, lineCode, distance, d);
+        line.setNode(sourceCode, buses.getStopName(s),buses.getStopZone(s),
+                     buses.getStopLatitude(s), buses.getStopLongitude(s));
+        line.setNode(destCode, buses.getStopName(d),buses.getStopZone(d),
+                     buses.getStopLatitude(d), buses.getStopLongitude(d));
+        line.addEdge(line.getStopsInfo().at(sourceCode), distance, line.getStopsInfo().at(destCode));
     }
+    lines.push_back(line);
 }
 
 void LoadData::loadLinesInfo() {
@@ -100,8 +118,8 @@ void LoadData::loadLinesInfo() {
     for (it = buses.getLinesInfo().begin(); it != buses.getLinesInfo().end(); it++) {
         ostringstream out0, out1;
         out0 << "line_" << it->first << "_0" << ".csv";
-        readInfoFromLine(out0.str(), it->first);
+        readInfoFromLine(out0.str(), it->first, it->second);
         out1 << "line_" << it->first << "_1" << ".csv";
-        readInfoFromLine(out1.str(), it->first);
+        readInfoFromLine(out1.str(), it->first, it->second);
     }
 }
