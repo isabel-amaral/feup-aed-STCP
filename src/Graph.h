@@ -98,6 +98,7 @@ class Graph {
     double walkingDistance;
 
 public:
+    Graph();
     Graph(int num);
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;

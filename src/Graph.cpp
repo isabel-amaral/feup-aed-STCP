@@ -4,6 +4,14 @@
 #include "Graph.h"
 #include "MinHeap.h"
 
+Graph::Graph() {
+    this->n = 0;
+    this->stops = vector<Node>();
+    this->stopsInfo.empty();
+    this->linesInfo.empty();
+    this->walkingDistance = 0;
+}
+
 Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;
 }
@@ -26,12 +34,21 @@ const map<string, string>& Graph::getLinesInfo() const {
 
 void Graph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
     int nodeIndex = stopsInfo.size() + 1;
+    Node stop;
+    stop.stopCode = code;
+    stop.stopName = name;
+    stop.zone = zone;
+    stop.latitude = latitude;
+    stop.longitude = longitude;
+    stops.push_back(stop);
+    stopsInfo.insert({code, nodeIndex});
+    /*
     stopsInfo.insert({code,nodeIndex});
     stops.at(nodeIndex).stopCode = code;
     stops.at(nodeIndex).stopName = name;
     stops.at(nodeIndex).zone = zone;
     stops.at(nodeIndex).latitude = latitude;
-    stops.at(nodeIndex).longitude = longitude;
+    stops.at(nodeIndex).longitude = longitude; */
 }
 
 void Graph::addLine(string code, string name) {
@@ -183,7 +200,7 @@ int Graph::findClosestStop(double latitude, double longitude) {
         double distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
         if(distance < minDistance) {
             minDistance = distance;
-            closestStopIndex = v;
+            closestStopIndex = v + 1;
         }
     }
     return closestStopIndex;
