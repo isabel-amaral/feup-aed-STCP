@@ -167,7 +167,6 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
 
     if (start == 0 && end == 0)
         showMinimumStopsPath(result); // Se foi encontrado um caminho
-
     bfs(start, end);
     result.insert(result.begin(), end);
     int parent = stops.at(end).pred;
@@ -186,17 +185,16 @@ void Graph::showMinimumStopsPath(vector<int> path) const {
         return;
 
     cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
-    for (auto i = 0; i < path.size() -1; i++ ){
+    for (auto i = 0; i < path.size() -1; i++) {
         int index = path[i];
         for (const auto& ad : stops[index].adj){
-            if(ad.dest == path[i+1]){
-                if(!ad.lineCode.empty()){
+            if (ad.dest == path[i+1]) {
+                if (!ad.lineCode.empty()) {
                     cout << ad.lineCode << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
                     lastLineBeforeWalking = ad.lineCode;
                     break;
                 }
-
-                else{
+                else {
                     int nextStop = path[i+1];
                     cout << lastLineBeforeWalking << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
                     cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
@@ -294,7 +292,7 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
 
 void Graph::showShortestPathChangingLines(list<int> path) const {
     for (auto p: path){
-        cout << stops[p].stopCode << endl;
+        cout << stops[p].stopCode << "-" << stops[p].stopName<<endl;
     }
 }
 
