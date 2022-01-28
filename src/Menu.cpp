@@ -1,6 +1,7 @@
 #include "Menu.h"
 
 Menu::Menu() {
+    cout << "BEM-VINDO AOS SERVICOS STCP" << endl;
     option = 0;
 
     buses = Graph(2487);
@@ -75,13 +76,11 @@ void Menu::menu1(double latitude1, double longitude1) {
     cin >> latitude1;
     cout << "Indique a longitude a que se encontra: " << endl;
     cin >> longitude1;
-
-    list<int> closestStops = buses.findClosestStops(latitude1, longitude1);
-
     cout << "Encontra-se a:" << endl;
 
+    list<int> closestStops = buses.findClosestStops(latitude1, longitude1);
     for (int i = 0; i < closestStops.size(); i++) {
-
+        //TODO
     }
 
     cout << endl;

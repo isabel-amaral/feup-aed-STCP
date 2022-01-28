@@ -3,15 +3,7 @@
 #include <iostream>
 #include "Graph.h"
 
-//Graph::Graph() {}
-
-Graph::Graph() {
-    this->n = 0;
-    this->stops = vector<Node>();
-    this->stopsInfo.empty();
-    this->linesInfo.empty();
-    this->walkingDistance = 0;
-}
+Graph::Graph() {}
 
 Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;

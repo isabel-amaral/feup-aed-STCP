@@ -86,6 +86,7 @@ void Lines::showShortestPathWithinSameLine(int numStops, string line, string sta
     LineGraph l = findCorrespondingLine(line, startStop);
     cout << "Apanahe a linha " << l.getLineName() << " (" << line << ")." << endl;
     cout << "Chegara ao seu destino em " << numStops << " paragens." << endl;
+    //TODO: acrescentar cálculo da distânica
     cout << "Direcoes: " << endl << endl;
 
     vector<string> stops = l.getStops();

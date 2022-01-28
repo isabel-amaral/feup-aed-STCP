@@ -3,11 +3,9 @@
 #include "Lines.h"
 #include "LoadData.h"
 #include "Menu.h"
-#include "Graph.h"
 
 using namespace std;
 int main() {
-    cout << "BEM-VINDO AOS SERVICOS STCP" << endl;
     Menu m = Menu();
 
     //feup -> casa: apanhar o 300
