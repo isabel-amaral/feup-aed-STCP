@@ -121,8 +121,10 @@ public:
     void addEdge(int src, string code, double weight, int dest);
     void setWalkingDistance(double dist);
     void addWalkingEdges();
+    void addPositionNode(double latitude, double longitude, MinHeap<int, double> closestStops);
+    void removePositionNode(MinHeap<int, double> closestStops);
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-    MinHeap<int, int> findClosestStops(double latitude, double longitude);
+    MinHeap<int, double> findClosestStops(double latitude, double longitude);
     int findClosestStop(double latitude, double longitude);
 
     //TODO: bfs, devolve nº de paragens
@@ -135,7 +137,7 @@ public:
     void getLowestLineChanges(double latitude, double longitude);
 
     //TODO: cout do nº de paragens e do caminho
-    void showMinimumStopsPath(list<int> path) const;
+    void showMinimumStopsPath(vector<int> path) const;
     //TODO: cout da distância e do caminho
     void showShortestPathWithinSameLine() const;
     //TODO: cout da distânica, nº de vezes q muda de autocarro
