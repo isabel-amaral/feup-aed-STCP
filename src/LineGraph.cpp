@@ -10,7 +10,7 @@ string LineGraph::getLineCode() const {
     return lineCode;
 }
 
-const vector<string>& LineGraph::getStops() const {
+vector<string> LineGraph::getStops() const {
     vector<string> stops;
     for (Node n: this->stops)
         stops.push_back(n.stopCode);
@@ -84,5 +84,7 @@ int LineGraph::findPath(const MinHeap<string, double>& stopsNearEnd, int source)
             }
         }
     }
+    if (count == n - source)
+        return INT_MAX;
     return count;
 }
