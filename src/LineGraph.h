@@ -36,12 +36,15 @@ class LineGraph {
 public:
     LineGraph(const string &lineCode, const string &lineName, int n);
     string getLineCode() const;
+    const vector<string>& getStops() const;
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;
     const map<string, int>& getStopsInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
     void addEdge(int src, double weight, int dest);
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
+
+    int findPath(const MinHeap<string, double>& stopsNearEnd, int source);
 };
 
 #endif //STCP_LINEGRAPH_H

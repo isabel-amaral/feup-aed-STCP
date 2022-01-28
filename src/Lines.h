@@ -16,6 +16,8 @@ public:
     void setLines(const list<LineGraph> &lines);
     void setBuses(const Graph &buses);
     void setWalkingDistance(double walkingDistance);
+    MinHeap<string, double> findClosestStops(double latitude, double longitude);
+    LineGraph findCorrespondingLine(string line, string stopCode) const;
 
     //TODO
     void getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2);

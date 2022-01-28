@@ -100,10 +100,14 @@ class Graph {
 public:
     Graph();
     Graph(int num);
+
+    vector<string> getStops() const;
+    string getStopCode(int node) const;
     string getStopName(int node) const;
     string getStopZone(int node) const;
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;
+    list<string> getStopLines(string node) const;
     const map<string, int>& getStopsInfo() const;
     const map<string, string>& getLinesInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
@@ -124,7 +128,7 @@ public:
     void setWalkingDistance(double dist);
     void addWalkingEdges();
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-    MinHeap<int, int> findClosestStops(double latitude, double longitude);
+    MinHeap<int, double> findClosestStops(double latitude, double longitude);
     int findClosestStop(double latitude, double longitude);
 
     //TODO: bfs, devolve nº de paragens

@@ -9,6 +9,17 @@ Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;
 }
 
+vector<string> Graph::getStops() const {
+    vector<string> stops;
+    for (Node n: this->stops)
+        stops.push_back(n.stopCode);
+    return stops;
+}
+
+string Graph::getStopCode(int node) const {
+    return stops[node].stopCode;
+}
+
 string Graph::getStopName(int node) const {
     return stops[node].stopName;
 }
@@ -31,6 +42,14 @@ const map<string, int>& Graph::getStopsInfo() const {
 
 const map<string, string>& Graph::getLinesInfo() const {
     return linesInfo;
+}
+
+list<string> Graph::getStopLines(string node) const {
+    list<string> lines;
+    int index = stopsInfo.at(node);
+    for (Edge e: stops[index].adj)
+        lines.push_back(e.lineCode);
+    return lines;
 }
 
 void Graph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
@@ -82,14 +101,14 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
 }
 
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
-    MinHeap<int, int> stopsNearStart = findClosestStops(latitude1, longitude1);
-    MinHeap<int, int> stopsNearEnd = findClosestStops(latitude2, longitude2);
+    MinHeap<int, double> stopsNearStart = findClosestStops(latitude1, longitude1);
+    MinHeap<int, double> stopsNearEnd = findClosestStops(latitude2, longitude2);
     list<int> result;
     int lastMinDist = INT_MAX, start = 0, end = 0;
 
     while (stopsNearStart.getSize() != 0) {
         int i = stopsNearStart.removeMin();
-        MinHeap<int, int> aux = stopsNearEnd;
+        MinHeap<int, double> aux = stopsNearEnd;
         while (stopsNearEnd.getSize() != 0) {
             int j = aux.removeMin();
             bfs(i, j);
@@ -122,9 +141,9 @@ void Graph::showMinimumStopsPath(list<int> path) const {
     }
 }
 
-MinHeap<int, int> Graph::findClosestStops(double latitude, double longitude) {
-    MinHeap<int, int> closestStops(stops.size(), -1);
-    for (int v = 1; v <= stops.size(); v++) {
+MinHeap<int, double> Graph::findClosestStops(double latitude, double longitude) {
+    MinHeap<int, double> closestStops(stops.size(), -1);
+    for (int v = 1; v < stops.size(); v++) {
         stops[v].visited = false;
         if (calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
@@ -150,7 +169,7 @@ int Graph::findClosestStop(double latitude, double longitude) {
 }
 
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
-    MinHeap<int, int> closestStops = findClosestStops(latitude1, longitude1);
+    MinHeap<int, double> closestStops = findClosestStops(latitude1, longitude1);
 
     int originIndex = findClosestStop(latitude1, longitude1);
     stops[originIndex].dist = 0;

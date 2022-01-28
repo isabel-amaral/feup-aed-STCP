@@ -1,11 +1,20 @@
 #include "LineGraph.h"
 #include <cmath>
+#include <queue>
+using namespace std;
 
 LineGraph::LineGraph(const string &lineCode, const string &lineName, int n) :
                         lineCode(lineCode), lineName(lineName), n(n), stops(n+1) {}
 
 string LineGraph::getLineCode() const {
     return lineCode;
+}
+
+const vector<string>& LineGraph::getStops() const {
+    vector<string> stops;
+    for (Node n: this->stops)
+        stops.push_back(n.stopCode);
+    return stops;
 }
 
 double LineGraph::getStopLatitude(int node) const {
@@ -47,4 +56,33 @@ double LineGraph::calculateDistance(double latitude1, double longitude1, double 
     double rad = 6371;
     double c = 2 * asin(sqrt(a));
     return rad * c * 1000;
+}
+
+//bfs
+int LineGraph::findPath(const MinHeap<string, double>& stopsNearEnd, int source) {
+    for (Node n: stops)
+        n.visited = false;
+
+    bool foundCloseStop = false;
+    int count = 0;
+    queue<int> q;
+    q.push(source);
+    stops[source].visited = true;
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for (Edge e: stops[u].adj) {
+            if (!stops[e.dest].visited) {
+                if (!foundCloseStop && stopsNearEnd.hasKey(stops[e.dest].stopCode))
+                        foundCloseStop = true;
+                else if (foundCloseStop && !stopsNearEnd.hasKey(stops[e.dest].stopCode))
+                    break;
+                q.push(e.dest);
+                stops[e.dest].visited = true;
+                count++;
+            }
+        }
+    }
+    return count;
 }

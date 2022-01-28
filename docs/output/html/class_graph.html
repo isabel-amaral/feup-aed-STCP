@@ -85,6 +85,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2a0965eeb2982cc30e4e299b1da92cc"><td class="memItemLeft" align="right" valign="top"><a id="aa2a0965eeb2982cc30e4e299b1da92cc" name="aa2a0965eeb2982cc30e4e299b1da92cc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Graph</b> (int num)</td></tr>
 <tr class="separator:aa2a0965eeb2982cc30e4e299b1da92cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23bb419b181a2bfac9e2c17177154ea"><td class="memItemLeft" align="right" valign="top"><a id="aa23bb419b181a2bfac9e2c17177154ea" name="aa23bb419b181a2bfac9e2c17177154ea"></a>
+vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStops</b> () const</td></tr>
+<tr class="separator:aa23bb419b181a2bfac9e2c17177154ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3d9ad933350073a1ce8541db30afd6"><td class="memItemLeft" align="right" valign="top"><a id="a4b3d9ad933350073a1ce8541db30afd6" name="a4b3d9ad933350073a1ce8541db30afd6"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>getStopCode</b> (int node) const</td></tr>
+<tr class="separator:a4b3d9ad933350073a1ce8541db30afd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a297d6d306a46d36e4baa997c4a07587a"><td class="memItemLeft" align="right" valign="top"><a id="a297d6d306a46d36e4baa997c4a07587a" name="a297d6d306a46d36e4baa997c4a07587a"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>getStopName</b> (int node) const</td></tr>
 <tr class="separator:a297d6d306a46d36e4baa997c4a07587a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,6 +103,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLatitude</b>
 <tr class="memitem:a028b7e78a1128dca50881cd36ee7dc50"><td class="memItemLeft" align="right" valign="top"><a id="a028b7e78a1128dca50881cd36ee7dc50" name="a028b7e78a1128dca50881cd36ee7dc50"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLongitude</b> (int node) const</td></tr>
 <tr class="separator:a028b7e78a1128dca50881cd36ee7dc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acedda8a7dfd072355c800135ac3a5ed1"><td class="memItemLeft" align="right" valign="top"><a id="acedda8a7dfd072355c800135ac3a5ed1" name="acedda8a7dfd072355c800135ac3a5ed1"></a>
+list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLines</b> (string node) const</td></tr>
+<tr class="separator:acedda8a7dfd072355c800135ac3a5ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a365832fb1001138cd731fdbc8e6b7ab1"><td class="memItemLeft" align="right" valign="top"><a id="a365832fb1001138cd731fdbc8e6b7ab1" name="a365832fb1001138cd731fdbc8e6b7ab1"></a>
 const map&lt; string, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getStopsInfo</b> () const</td></tr>
 <tr class="separator:a365832fb1001138cd731fdbc8e6b7ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,9 +125,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setWalkingDistance</b
 <tr class="memitem:a77eec1d49d94155842d1b636c8d981d8"><td class="memItemLeft" align="right" valign="top"><a id="a77eec1d49d94155842d1b636c8d981d8" name="a77eec1d49d94155842d1b636c8d981d8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addWalkingEdges</b> ()</td></tr>
 <tr class="separator:a77eec1d49d94155842d1b636c8d981d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a264000de9f10b6a0a56aa4e378b84c25"><td class="memItemLeft" align="right" valign="top"><a id="a264000de9f10b6a0a56aa4e378b84c25" name="a264000de9f10b6a0a56aa4e378b84c25"></a>
-<a class="el" href="class_min_heap.html">MinHeap</a>&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStops</b> (double latitude, double longitude)</td></tr>
-<tr class="separator:a264000de9f10b6a0a56aa4e378b84c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a9e2b42046dc1909fad6d9a6b691cf0"><td class="memItemLeft" align="right" valign="top"><a id="a1a9e2b42046dc1909fad6d9a6b691cf0" name="a1a9e2b42046dc1909fad6d9a6b691cf0"></a>
+<a class="el" href="class_min_heap.html">MinHeap</a>&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStops</b> (double latitude, double longitude)</td></tr>
+<tr class="separator:a1a9e2b42046dc1909fad6d9a6b691cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e3c4061f49174326c408ff717c5a6f5"><td class="memItemLeft" align="right" valign="top"><a id="a3e3c4061f49174326c408ff717c5a6f5" name="a3e3c4061f49174326c408ff717c5a6f5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStop</b> (double latitude, double longitude)</td></tr>
 <tr class="separator:a3e3c4061f49174326c408ff717c5a6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
