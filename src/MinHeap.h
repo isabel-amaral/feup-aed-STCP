@@ -31,7 +31,7 @@ class MinHeap {
 public:
     MinHeap(int n, const K& notFound); // Create a min-heap for a max of n pairs (K,V) with notFound returned when empty
     int getSize();              // Return number of elements in the heap
-    bool hasKey(const K& key);  // Heap has key?
+    bool hasKey(const K& key) const;  // Heap has key?
     void insert(const K& key, const V& value);      // Insert (key, value) on the heap
     void decreaseKey(const K& key, const V& value); // Decrease value of key
     K removeMin(); // remove and return key with smaller value
@@ -83,7 +83,7 @@ int MinHeap<K,V>::getSize() {
 
 // Heap has key?
 template <class K, class V>
-bool MinHeap<K, V>::hasKey(const K& key) {
+bool MinHeap<K, V>::hasKey(const K& key) const {
     return pos.find(key) != pos.end();
 }
 

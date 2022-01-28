@@ -2,7 +2,8 @@
 #include <queue>
 #include <iostream>
 #include "Graph.h"
-#include "MinHeap.h"
+
+//Graph::Graph() {}
 
 Graph::Graph() {
     this->n = 0;
@@ -14,6 +15,25 @@ Graph::Graph() {
 
 Graph::Graph(int num) : n(num), stops(num+1) {
     this->walkingDistance = 0;
+}
+
+vector<string> Graph::getStops() const {
+    vector<string> stops;
+    for (Node n: this->stops)
+        stops.push_back(n.stopCode);
+    return stops;
+}
+
+string Graph::getStopCode(int node) const {
+    return stops[node].stopCode;
+}
+
+string Graph::getStopName(int node) const {
+    return stops[node].stopName;
+}
+
+string Graph::getStopZone(int node) const {
+    return stops[node].zone;
 }
 
 double Graph::getStopLatitude(int node) const {
@@ -32,23 +52,23 @@ const map<string, string>& Graph::getLinesInfo() const {
     return linesInfo;
 }
 
+list<string> Graph::getStopLines(string node) const {
+    list<string> lines;
+    int index = stopsInfo.at(node);
+    for (Edge e: stops[index].adj)
+        lines.push_back(e.lineCode);
+    return lines;
+}
+
 void Graph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
     int nodeIndex = stopsInfo.size() + 1;
-    Node stop;
-    stop.stopCode = code;
-    stop.stopName = name;
-    stop.zone = zone;
-    stop.latitude = latitude;
-    stop.longitude = longitude;
-    stops.push_back(stop);
-    stopsInfo.insert({code, nodeIndex});
-    /*
     stopsInfo.insert({code,nodeIndex});
     stops.at(nodeIndex).stopCode = code;
     stops.at(nodeIndex).stopName = name;
     stops.at(nodeIndex).zone = zone;
     stops.at(nodeIndex).latitude = latitude;
-    stops.at(nodeIndex).longitude = longitude; */
+    stops.at(nodeIndex).longitude = longitude;
+    stops.at(nodeIndex).longitude = longitude;
 }
 
 void Graph::addLine(string code, string name) {
@@ -77,26 +97,23 @@ void Graph::addWalkingEdges(){
     }
 }
 
-void Graph::addPositionNode(double latitude, double longitude, MinHeap<int, double> closestStops) {
+void Graph::addPositionNode(double latitude, double longitude, list<int> closestStops) {
     stops.resize(stops.size()+1);
     stops.back().latitude = latitude;
     stops.back().longitude = longitude;
     n++;
-    while(closestStops.getSize() > 0){
-        int aux = closestStops.removeMin();
+    for (auto aux: closestStops){
         double distance = calculateDistance(latitude, longitude, stops[aux].latitude, stops[aux].longitude);
         addEdge(stops.size()-1, "", distance, aux);
         addEdge(aux, "", distance, stops.size()-1);
     }
 }
 
-void Graph::removePositionNode(MinHeap<int,double> closestStops) {
+void Graph::removePositionNode(list<int> closestStops) {
     stops.resize(stops.size()-1);
     n--;
-    while(closestStops.getSize() > 0){
-        int aux = closestStops.removeMin();
+    for (auto aux: closestStops)
         stops[aux].adj.pop_back();
-    }
 }
 
 double Graph::calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
@@ -112,17 +129,41 @@ double Graph::calculateDistance(double latitude1, double longitude1, double lati
     return rad * c * 1000;
 }
 
+void Graph::bfs(int a, int b) {
+    queue<int> aux;
+
+    for (int i = 1; i < stops.size(); i++){
+        stops[i].visited = false;
+        stops[i].pred = -1;
+    }
+    stops[b].dist = INT_MAX;
+    stops[a].dist = 0;
+    stops[a].visited = true;
+    stops[a].pred = 0;
+    aux.push(a);
+
+    while (!aux.empty()) { // while there are still unprocessed nodes
+        int u = aux.front(); aux.pop(); // remove first element of q
+        for (auto e : stops[u]. adj) {
+            int w = e.dest;
+            if (!stops[w].visited) { // new node!
+                aux.push(w);
+                stops[w].visited = true;
+                stops[w].dist = stops[u].dist + 1;
+                stops[w].pred = u;
+            }
+        }
+    }
+}
+
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
-    MinHeap<int, double> stopsNearStart = findClosestStops(latitude1, longitude1);
-    MinHeap<int, double> stopsNearEnd = findClosestStops(latitude2, longitude2);
+    list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
+    list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     vector<int> result;
     int lastMinDist = INT_MAX, start = 0, end = 0;
 
-    while (stopsNearStart.getSize() > 0) {
-        int i = stopsNearStart.removeMin();
-        MinHeap<int, double> aux = stopsNearEnd;
-        while (aux.getSize() > 0) {
-            int j = aux.removeMin();
+    for (auto i: stopsNearStart) {
+        for (auto j: stopsNearEnd){
             bfs(i, j);
             if (stops[j].visited && stops[j].dist < lastMinDist){
                 lastMinDist = stops[j].dist;
@@ -132,12 +173,13 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
         }
     }
 
-    if (start == 0 && end == 0) showMinimumStopsPath(result); // Se foi encontrado um caminho
+    if (start == 0 && end == 0)
+        showMinimumStopsPath(result); // Se foi encontrado um caminho
 
     bfs(start, end);
-    result.insert(result.begin(),end);
+    result.insert(result.begin(), end);
     int parent = stops.at(end).pred;
-    while (parent != 0) {                                          // Enquanto não chegar a paragem inicial que é a única que possui parent = 0
+    while (parent != 0) {  // Enquanto não chegar a paragem inicial que é a única que possui parent = 0
         result.insert(result.begin(), parent);
         parent = stops.at(parent).pred;
     }
@@ -148,54 +190,44 @@ void Graph::showMinimumStopsPath(vector<int> path) const {
     int lastStop = path.back();
     string lastLineBeforeWalking;
 
-    if (!path.empty()){
-        cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
-        for (auto i = 0; i < path.size() -1; i++ ){
-            int index = path[i];
-            for (const auto& ad : stops[index].adj){
-                if(ad.dest == path[i+1]){
-                    if(!ad.lineCode.empty()){
-                        cout << ad.lineCode << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
-                        lastLineBeforeWalking = ad.lineCode;
-                        break;
-                    }
+    if (path.empty())
+        return;
 
-                    else{
-                        int nextStop = path[i+1];
-                        cout << lastLineBeforeWalking << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
-                        cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
-                        break;
-                    }
+    cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
+    for (auto i = 0; i < path.size() -1; i++ ){
+        int index = path[i];
+        for (const auto& ad : stops[index].adj){
+            if(ad.dest == path[i+1]){
+                if(!ad.lineCode.empty()){
+                    cout << ad.lineCode << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
+                    lastLineBeforeWalking = ad.lineCode;
+                    break;
+                }
+
+                else{
+                    int nextStop = path[i+1];
+                    cout << lastLineBeforeWalking << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
+                    cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
+                    break;
                 }
             }
         }
-
-        cout << lastLineBeforeWalking << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
-        cout << "Caminhe ate ao seu destino" << endl;
     }
+
+    cout << lastLineBeforeWalking << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
+    cout << "Caminhe ate ao seu destino" << endl;
 }
 
-void Graph::getShortestPathWithinSameLine(double latitude, double longitude) {
-    //TODO
-    showShortestPathWithinSameLine();
-}
-
-void Graph::showShortestPathWithinSameLine() const {
-
-}
-
-MinHeap<int, double> Graph::findClosestStops(double latitude, double longitude) {
-    MinHeap<int, double> closestStops(stops.size(), -1);
-    for(int v = 1; v < stops.size(); v++) {
+list<int> Graph::findClosestStops(double latitude, double longitude) {
+    list<int> closestStops;
+    for (int v = 1; v < stops.size(); v++) {
         stops[v].visited = false;
-        if (calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) == 0)
-        if(calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
+        if (calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude) <= walkingDistance) {
             stops[v].dist = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
-            closestStops.insert(v, stops[v].dist);
+            closestStops.push_back(v);
         }
-        else {
+        else
             stops[v].dist = LONG_MAX;
-        }
     }
     return closestStops;
 }
@@ -214,8 +246,8 @@ int Graph::findClosestStop(double latitude, double longitude) {
 }
 
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
-    MinHeap<int, double> stopsNearStart = findClosestStops(latitude1, longitude1);
-    MinHeap<int, double> stopsNearEnd = findClosestStops(latitude2, longitude2);
+    list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
+    list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     addPositionNode(latitude1, longitude1, stopsNearStart);
     addPositionNode(latitude2, longitude2, stopsNearEnd);
     MinHeap<int, double> visitedStops(stops.size(), -1);
@@ -253,20 +285,19 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
         }
     }
 
-    list<int> path;
+    vector<int> path;
     if (stops[destinationIndex].visited) {
-        path.push_front(destinationIndex);
         int parent = stops[destinationIndex].pred;
-        path.push_front(parent);
+        path.insert(path.begin(), parent);
 
         while (parent != originIndex) {
             parent = stops[parent].pred;
-            path.push_front(parent);
+            path.insert(path.begin(), parent);
         }
     }
     removePositionNode(stopsNearEnd);
     removePositionNode(stopsNearStart);
-    showShortestPathChangingLines(path);
+    showMinimumStopsPath(path);
 }
 
 void Graph::showShortestPathChangingLines(list<int> path) const {
@@ -283,34 +314,3 @@ void Graph::getLowestLineChanges(double latitude, double longitude) {
 void Graph::showLowestLineChanges() const {
 
 }
-
-void Graph::bfs(int a, int b) {
-    queue<int> aux;
-
-    for (int i = 1; i < stops.size(); i++){
-        stops[i].visited = false;
-        stops[i].pred = -1;
-    }
-    stops[b].dist = INT_MAX;
-    stops[a].dist = 0;
-    stops[a].visited = true;
-    stops[a].pred = 0;
-    aux.push(a);
-
-    while (!aux.empty()) { // while there are still unprocessed nodes
-        int u = aux.front(); aux.pop(); // remove first element of q
-        for (auto e : stops[u]. adj) {
-            int w = e.dest;
-            if (!stops[w].visited) { // new node!
-                aux.push(w);
-                stops[w].visited = true;
-                stops[w].dist = stops[u].dist + 1;
-                stops[w].pred = u;
-            }
-        }
-    }
-}
-
-
-
-

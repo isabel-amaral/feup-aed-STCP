@@ -85,12 +85,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2a0965eeb2982cc30e4e299b1da92cc"><td class="memItemLeft" align="right" valign="top"><a id="aa2a0965eeb2982cc30e4e299b1da92cc" name="aa2a0965eeb2982cc30e4e299b1da92cc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Graph</b> (int num)</td></tr>
 <tr class="separator:aa2a0965eeb2982cc30e4e299b1da92cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23bb419b181a2bfac9e2c17177154ea"><td class="memItemLeft" align="right" valign="top"><a id="aa23bb419b181a2bfac9e2c17177154ea" name="aa23bb419b181a2bfac9e2c17177154ea"></a>
+vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStops</b> () const</td></tr>
+<tr class="separator:aa23bb419b181a2bfac9e2c17177154ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3d9ad933350073a1ce8541db30afd6"><td class="memItemLeft" align="right" valign="top"><a id="a4b3d9ad933350073a1ce8541db30afd6" name="a4b3d9ad933350073a1ce8541db30afd6"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>getStopCode</b> (int node) const</td></tr>
+<tr class="separator:a4b3d9ad933350073a1ce8541db30afd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297d6d306a46d36e4baa997c4a07587a"><td class="memItemLeft" align="right" valign="top"><a id="a297d6d306a46d36e4baa997c4a07587a" name="a297d6d306a46d36e4baa997c4a07587a"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>getStopName</b> (int node) const</td></tr>
+<tr class="separator:a297d6d306a46d36e4baa997c4a07587a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b50cbbbfe3c993021b62d553787bbc0"><td class="memItemLeft" align="right" valign="top"><a id="a2b50cbbbfe3c993021b62d553787bbc0" name="a2b50cbbbfe3c993021b62d553787bbc0"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>getStopZone</b> (int node) const</td></tr>
+<tr class="separator:a2b50cbbbfe3c993021b62d553787bbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c3d0b4c4c9675daf559b0893eceeab6"><td class="memItemLeft" align="right" valign="top"><a id="a6c3d0b4c4c9675daf559b0893eceeab6" name="a6c3d0b4c4c9675daf559b0893eceeab6"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLatitude</b> (int node) const</td></tr>
 <tr class="separator:a6c3d0b4c4c9675daf559b0893eceeab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a028b7e78a1128dca50881cd36ee7dc50"><td class="memItemLeft" align="right" valign="top"><a id="a028b7e78a1128dca50881cd36ee7dc50" name="a028b7e78a1128dca50881cd36ee7dc50"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLongitude</b> (int node) const</td></tr>
 <tr class="separator:a028b7e78a1128dca50881cd36ee7dc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acedda8a7dfd072355c800135ac3a5ed1"><td class="memItemLeft" align="right" valign="top"><a id="acedda8a7dfd072355c800135ac3a5ed1" name="acedda8a7dfd072355c800135ac3a5ed1"></a>
+list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLines</b> (string node) const</td></tr>
+<tr class="separator:acedda8a7dfd072355c800135ac3a5ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a365832fb1001138cd731fdbc8e6b7ab1"><td class="memItemLeft" align="right" valign="top"><a id="a365832fb1001138cd731fdbc8e6b7ab1" name="a365832fb1001138cd731fdbc8e6b7ab1"></a>
 const map&lt; string, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getStopsInfo</b> () const</td></tr>
 <tr class="separator:a365832fb1001138cd731fdbc8e6b7ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,45 +125,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setWalkingDistance</b
 <tr class="memitem:a77eec1d49d94155842d1b636c8d981d8"><td class="memItemLeft" align="right" valign="top"><a id="a77eec1d49d94155842d1b636c8d981d8" name="a77eec1d49d94155842d1b636c8d981d8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addWalkingEdges</b> ()</td></tr>
 <tr class="separator:a77eec1d49d94155842d1b636c8d981d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<<<<<<< HEAD
-<tr class="memitem:a264000de9f10b6a0a56aa4e378b84c25"><td class="memItemLeft" align="right" valign="top"><a id="a264000de9f10b6a0a56aa4e378b84c25" name="a264000de9f10b6a0a56aa4e378b84c25"></a>
-<a class="el" href="class_min_heap.html">MinHeap</a>&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStops</b> (double latitude, double longitude)</td></tr>
-<tr class="separator:a264000de9f10b6a0a56aa4e378b84c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-=======
+<tr class="memitem:af3f3fdd917b849d8e612e6bd8aecc42d"><td class="memItemLeft" align="right" valign="top"><a id="af3f3fdd917b849d8e612e6bd8aecc42d" name="af3f3fdd917b849d8e612e6bd8aecc42d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addPositionNode</b> (double latitude, double longitude, list&lt; int &gt; closestStops)</td></tr>
+<tr class="separator:af3f3fdd917b849d8e612e6bd8aecc42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67a74d3d430465399cfd08d0243049e"><td class="memItemLeft" align="right" valign="top"><a id="aa67a74d3d430465399cfd08d0243049e" name="aa67a74d3d430465399cfd08d0243049e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>removePositionNode</b> (list&lt; int &gt; closestStops)</td></tr>
+<tr class="separator:aa67a74d3d430465399cfd08d0243049e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a610e18f9c58f1a7e0a1fa0684faa9ed7"><td class="memItemLeft" align="right" valign="top"><a id="a610e18f9c58f1a7e0a1fa0684faa9ed7" name="a610e18f9c58f1a7e0a1fa0684faa9ed7"></a>
 list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStops</b> (double latitude, double longitude)</td></tr>
 <tr class="separator:a610e18f9c58f1a7e0a1fa0684faa9ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
->>>>>>> 0296966483e7f408d9dfe39e0a0dd986293b890b
 <tr class="memitem:a3e3c4061f49174326c408ff717c5a6f5"><td class="memItemLeft" align="right" valign="top"><a id="a3e3c4061f49174326c408ff717c5a6f5" name="a3e3c4061f49174326c408ff717c5a6f5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>findClosestStop</b> (double latitude, double longitude)</td></tr>
 <tr class="separator:a3e3c4061f49174326c408ff717c5a6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memItemLeft" align="right" valign="top"><a id="a29eb85cbf9a8bfcbde71a756648032a2" name="a29eb85cbf9a8bfcbde71a756648032a2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bfs</b> (int a, int b)</td></tr>
+<tr class="separator:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a223453a9fb38552f67b19c4ff95da685"><td class="memItemLeft" align="right" valign="top"><a id="a223453a9fb38552f67b19c4ff95da685" name="a223453a9fb38552f67b19c4ff95da685"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getMinimumStopsPath</b> (double latitude1, double longitude1, double latitude2, double longitude2)</td></tr>
 <tr class="separator:a223453a9fb38552f67b19c4ff95da685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa66366cdca8e01fda5ef159190fd8770"><td class="memItemLeft" align="right" valign="top"><a id="aa66366cdca8e01fda5ef159190fd8770" name="aa66366cdca8e01fda5ef159190fd8770"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getShortestPathWithinSameLine</b> (double latitude, double longitude)</td></tr>
-<tr class="separator:aa66366cdca8e01fda5ef159190fd8770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ec791a4aa0f010c62bf6a36b685574a"><td class="memItemLeft" align="right" valign="top"><a id="a6ec791a4aa0f010c62bf6a36b685574a" name="a6ec791a4aa0f010c62bf6a36b685574a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getShortestPathChangingLines</b> (double latitude, double longitude, double latitude2, double longitude2)</td></tr>
 <tr class="separator:a6ec791a4aa0f010c62bf6a36b685574a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5205ebd2b18f164096a7cb04ef12fcb0"><td class="memItemLeft" align="right" valign="top"><a id="a5205ebd2b18f164096a7cb04ef12fcb0" name="a5205ebd2b18f164096a7cb04ef12fcb0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getLowestLineChanges</b> (double latitude, double longitude)</td></tr>
 <tr class="separator:a5205ebd2b18f164096a7cb04ef12fcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0de88fb9ea2d67559c6802f620013e86"><td class="memItemLeft" align="right" valign="top"><a id="a0de88fb9ea2d67559c6802f620013e86" name="a0de88fb9ea2d67559c6802f620013e86"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showMinimumStopsPath</b> (list&lt; int &gt; path) const</td></tr>
-<tr class="separator:a0de88fb9ea2d67559c6802f620013e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae37582317ec7c9ef1e479000aa129392"><td class="memItemLeft" align="right" valign="top"><a id="ae37582317ec7c9ef1e479000aa129392" name="ae37582317ec7c9ef1e479000aa129392"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showShortestPathWithinSameLine</b> () const</td></tr>
-<tr class="separator:ae37582317ec7c9ef1e479000aa129392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434b3de9d28f3d737c852046ace9f2e2"><td class="memItemLeft" align="right" valign="top"><a id="a434b3de9d28f3d737c852046ace9f2e2" name="a434b3de9d28f3d737c852046ace9f2e2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>showMinimumStopsPath</b> (vector&lt; int &gt; path) const</td></tr>
+<tr class="separator:a434b3de9d28f3d737c852046ace9f2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9bdde6f62a5ada1597c22ba91e4716a"><td class="memItemLeft" align="right" valign="top"><a id="ad9bdde6f62a5ada1597c22ba91e4716a" name="ad9bdde6f62a5ada1597c22ba91e4716a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>showShortestPathChangingLines</b> (list&lt; int &gt; path) const</td></tr>
 <tr class="separator:ad9bdde6f62a5ada1597c22ba91e4716a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0c6c877c41c6ea23875c88909cc2a85"><td class="memItemLeft" align="right" valign="top"><a id="ae0c6c877c41c6ea23875c88909cc2a85" name="ae0c6c877c41c6ea23875c88909cc2a85"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>showLowestLineChanges</b> () const</td></tr>
 <tr class="separator:ae0c6c877c41c6ea23875c88909cc2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memItemLeft" align="right" valign="top"><a id="a29eb85cbf9a8bfcbde71a756648032a2" name="a29eb85cbf9a8bfcbde71a756648032a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bfs</b> (int a, int b)</td></tr>
-<tr class="separator:a29eb85cbf9a8bfcbde71a756648032a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -371,13 +380,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<<<<<<< HEAD
-<li>C:/Users/sofia/Desktop/STCP/Src/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
-<li>C:/Users/sofia/Desktop/STCP/Src/Graph.cpp</li>
-=======
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/Graph.cpp</li>
->>>>>>> 0296966483e7f408d9dfe39e0a0dd986293b890b
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/Graph.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -100,8 +100,14 @@ class Graph {
 public:
     Graph();
     Graph(int num);
+
+    vector<string> getStops() const;
+    string getStopCode(int node) const;
+    string getStopName(int node) const;
+    string getStopZone(int node) const;
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;
+    list<string> getStopLines(string node) const;
     const map<string, int>& getStopsInfo() const;
     const map<string, string>& getLinesInfo() const;
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
@@ -121,31 +127,24 @@ public:
     void addEdge(int src, string code, double weight, int dest);
     void setWalkingDistance(double dist);
     void addWalkingEdges();
-    void addPositionNode(double latitude, double longitude, MinHeap<int, double> closestStops);
-    void removePositionNode(MinHeap<int, double> closestStops);
+    void addPositionNode(double latitude, double longitude, list<int> closestStops);
+    void removePositionNode(list<int> closestStops);
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
-    MinHeap<int, double> findClosestStops(double latitude, double longitude);
+    list<int> findClosestStops(double latitude, double longitude);
     int findClosestStop(double latitude, double longitude);
 
-    //TODO: bfs, devolve nº de paragens
+    void bfs(int a, int b);
     void getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO: dijkstra com algumas restrições extra, devolve distância
-    void getShortestPathWithinSameLine(double latitude, double longitude);
-    //TODO: dijkstra clássico
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     //TODO: ?
     void getLowestLineChanges(double latitude, double longitude);
 
     //TODO: cout do nº de paragens e do caminho
     void showMinimumStopsPath(vector<int> path) const;
-    //TODO: cout da distância e do caminho
-    void showShortestPathWithinSameLine() const;
     //TODO: cout da distânica, nº de vezes q muda de autocarro
     void showShortestPathChangingLines(list<int> path) const;
     //TODO: ?
     void showLowestLineChanges() const;
-
-    void bfs(int a, int b);
 };
 
 #endif //STCP_GRAPH_H

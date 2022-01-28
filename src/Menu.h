@@ -4,13 +4,16 @@
 #include <iostream>
 #include <stack>
 #include "Graph.h"
+#include "Lines.h"
 #include "LoadData.h"
 
 class Menu {
 private:
     Graph buses;
+    Lines lines;
     stack<int> lastMenu;
     int option;
+
 public:
     Menu();
     void readOption(const unsigned& minOption, const unsigned& maxOption);

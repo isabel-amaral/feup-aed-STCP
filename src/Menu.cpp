@@ -1,8 +1,15 @@
-#include "menu.h"
+#include "Menu.h"
 
 Menu::Menu() {
     option = 0;
-    LoadData loader(buses);
+
+    buses = Graph(2487);
+    LoadData loadData(buses, lines.getLines());
+    buses = loadData.getBuses();
+    lines.setLines(loadData.getLines());
+    lines.setBuses(buses);
+    //TODO: set walking distance
+
     lastMenu.push(0);   //'0' representa o menu inicial/principal
     menu0();
 }
@@ -69,11 +76,11 @@ void Menu::menu1(double latitude1, double longitude1) {
     cout << "Indique a longitude a que se encontra: " << endl;
     cin >> longitude1;
 
-    MinHeap<int, int> closestStops = buses.findClosestStops(latitude1, longitude1);
+    list<int> closestStops = buses.findClosestStops(latitude1, longitude1);
 
     cout << "Encontra-se a:" << endl;
 
-    for (int i = 0; i < closestStops.getSize(); i++) {
+    for (int i = 0; i < closestStops.size(); i++) {
 
     }
 
