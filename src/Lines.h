@@ -19,10 +19,8 @@ public:
     MinHeap<string, double> findClosestStops(double latitude, double longitude);
     LineGraph findCorrespondingLine(string line, string stopCode) const;
 
-    //TODO
     void getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO: cout da distância e do caminho
-    void showShortestPathWithinSameLine() const;
+    void showShortestPathWithinSameLine(int numStops, string line, string startStop) const;
 };
 
 #endif //STCP_LINES_H

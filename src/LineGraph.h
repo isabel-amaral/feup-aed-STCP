@@ -36,6 +36,9 @@ class LineGraph {
 public:
     LineGraph(const string &lineCode, const string &lineName, int n);
     string getLineCode() const;
+
+    const string &getLineName() const;
+
     vector<string> getStops() const;
     double getStopLatitude(int node) const;
     double getStopLongitude(int node) const;
