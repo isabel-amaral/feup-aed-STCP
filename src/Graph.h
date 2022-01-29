@@ -97,8 +97,9 @@ class Graph {
      */
     map<string, string> linesInfo;
     /**
-     * Distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem.
-     */
+    * Distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem
+    * ou para chegar da última paragem até ao seu destino.
+    */
     double walkingDistance;
 
 public:
@@ -213,7 +214,7 @@ public:
      */
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
-     * Determina, com base no atributo walkingDistance, as paragens próximas à um determindado local, a partir da latitude e longitude do mesmo.
+     * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
      * @param latitude latitude do local.
      * @param longitude longitude do local.
      * @return Lista de inteiros que representam internamente cada uma das paragens próximas ao respetivo local.
@@ -264,26 +265,37 @@ public:
      * @param longitude2 longitude do destino.
      */
     void getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO: MELHORAR O COUT: INDICAR QUE DEVE MUDAR DE AUTOCARRO E IMPRIMIR O NUMERO DE PARAGENS QUE IRÁ PERCORRER
     /**
      * Imprime na tela o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis.
-     * @param path Lista de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * @param distance1 é a distância entre a paragem incial e o local de partida.
+     * @param distance2 é a distância entre a paragem incial e o destino.
      */
-    void showMinimumStopsPath(vector<int> path) const;
-    //TODO: cout da distânica, nº de vezes q muda de autocarro
+    void showMinimumStopsPath(vector<int> path, double distance1, double distance2) const;
     /**
-     * Imprime na tela a distância, o número de vezes que muda de autocarro e o respetivo
-     * caminho que o utilizador deve seguir de modo a percorrer menor distância possível.
-     * @param path Lista de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * Imprime na tela a distância e o respetivo caminho que o utilizador
+     * deve seguir de modo a percorrer menor distância possível.
+     * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * @param distance1 é a distância entre a paragem incial e o local de partida.
+     * @param distance2 é a distância entre a paragem incial e o destino.
      */
-    void showShortestPathChangingLines(list<int> path) const;
+    void showShortestPathChangingLines(vector<int> path, double distance1, double distance2) const;
     /**
-     * Imprime na tela a distância, o número de vezes que muda de autocarro e o respetivo
-     * caminho que o utilizador deve seguir de modo a efetuar menos mudanças de autocarro (linha) possíveis.
+     * Imprime na tela o número total de zonas que serão percorridas e o respetivo caminho
+     * que o utilizador deve seguir de modo que o custo seja o menor possível (menos zonas).
+     * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * @param distance1 é a distância entre a paragem incial e o local de partida.
+     * @param distance2 é a distância entre a paragem incial e o destino.
      */
-    void showLowestLineChanges() const;
-    //TODO: DOCUMENTACAO
-    void showLowestZoneChanges(vector <int> path) const;
+    void showLowestZoneChanges(vector <int> path, double distance1, double distance2) const;
+    /**
+     * Imprime de forma detalhada (linha, paragem, etc) o caminho que o
+     * utilizador deve seguir desde a sua posição inicial até ao seu destino final.
+     * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
+     * @param distance1 é a distância entre a paragem incial e o local de partida.
+     * @param distance2 é a distância entre a paragem incial e o destino.
+     */
+    void showPath(vector<int> path, double distance1, double distance2) const;
 };
 
 #endif //STCP_GRAPH_H
