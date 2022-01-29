@@ -79,6 +79,7 @@ void Lines::getShortestPathWithinSameLine(double latitude1, double longitude1, d
                                               buses.getStopLongitude(buses.getStopsInfo().at(result.endStop)));
             }
             if (d < distance) {
+                distance = d;
                 countStops = result.count;
                 fasterLine = l;
                 startStop = s;
@@ -89,7 +90,7 @@ void Lines::getShortestPathWithinSameLine(double latitude1, double longitude1, d
 }
 
 void Lines::showShortestPathWithinSameLine(int numStops, double distance, string line, string startStop) const {
-    if (numStops == INT_MAX) {
+    if (distance == LONG_MAX) {
         cout << "Nao foi encontrado nenhum caminho sem mudar de linhas.";
         return;
     }
