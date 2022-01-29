@@ -65,7 +65,7 @@ void Menu::menu0() {
 
     if (option) {
         lastMenu.push(0);
-        processOption(latitude1, longitude1);
+        processOption();
     }
     else {
         cout << "VOLTE SEMPRE.";
@@ -95,7 +95,7 @@ void Menu::menu1() {
     cout << endl;
     option = lastMenu.top();
     lastMenu.pop();
-    processOption(latitude1, longitude1);
+    processOption();
 }
 
 void Menu::menu2() {
@@ -107,7 +107,12 @@ void Menu::menu2() {
     //cout << "4. Percurso mais barato (que passa por menos zonas)" << endl;
     cout << "0. voltar" << endl;
     cout << "ESCOLHA UMA OPCAO: ";
-    readOption(0, 4);
+    readOption(0, 3);
+    //readOption(0, 4);
+
+    if(option == 0) {
+        menu0();
+    }
 
     cout << "Indique a latitude a que se encontra: " << endl;
     cin >> latitude1;
@@ -135,5 +140,5 @@ void Menu::menu2() {
     cout << endl;
     option = lastMenu.top();
     lastMenu.pop();
-    processOption(latitude1, longitude1);
+    processOption();
 }
