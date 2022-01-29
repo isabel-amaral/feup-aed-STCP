@@ -64,15 +64,20 @@ class Graph {
          */
         double dist;
         /**
-         * Atributo de auxílio ao algoritmo de Djikstra:
+         * Atributo de auxílio ao algoritmo de Djikstra e ao Bfs:
          * paragem predecedente da paragem em questão no percurso a ser considerado.
          */
         int pred;
         /**
-         * Atributo de auxílio ao algoritmo de Djikstra:
+         * Atributo de auxílio ao algoritmo de Djikstra e ao Bfs:
          * se a menor distância até à paragem em questão já foi computada.
          */
         bool visited;
+        /**
+         * Atributo de auxílio ao Bfs:
+         * número de zonas percorridas desde a origem do percurso.
+         */
+        int numZones;
     };
 
     /**
@@ -220,9 +225,11 @@ public:
      */
     int findClosestStop(double latitude, double longitude);
     //TODO: DOCUMENTACAO
-    void bfs(int a, int b);
+    void bfsDistance(int a, int b);
+    //TODO: DOCUMENTACAO
+    void bfsZone (int a, int b);
     /**
-     * Determina, com recurso ao bfs, qual o caminho entre dois locais (partida e destino) que passa por menos paragens.
+     * Determina, com recurso ao algoritmo bfsDistance(), qual o caminho entre dois locais (partida e destino) que passa por menos paragens.
      * @param latitude1 latitude do local de partida.
      * @param longitude1 longitude do local de partida.
      * @param latitude2 latitude do destino.
@@ -240,6 +247,8 @@ public:
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     // TODO: DOCUMENTACAO; QUE ALGORITMO USOU-SE ETC
     void getLowestLineChanges(double latitude, double longitude);
+    //TODO: DOCUMENTACAO
+    void getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2);
     //TODO: MELHORAR O COUT: INDICAR QUE DEVE MUDAR DE AUTOCARRO E IMPRIMIR O NUMERO DE PARAGENS QUE IRÁ PERCORRER
     /**
      * Imprime na tela o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis.
@@ -259,6 +268,9 @@ public:
      * caminho que o utilizador deve seguir de modo a efetuar menos mudanças de autocarro (linha) possíveis.
      */
     void showLowestLineChanges() const;
+
+    //TODO: DOCUMENTACAO
+    void showLowestZoneChanges(vector <int> path) const;
 };
 
 #endif //STCP_GRAPH_H
