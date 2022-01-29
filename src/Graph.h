@@ -80,9 +80,9 @@ class Graph {
     };
 
     /**
-   * Tamanho do grafo.
-   * Cada paragem é representada internamente por um inteiro de 1 a n.
-   */
+    * Tamanho do grafo.
+    * Cada paragem é representada internamente por um inteiro de 1 a n.
+    */
     int n;
     /**
      * Todas as paragens da STCP respresentadas através de nós.

@@ -21,26 +21,14 @@ vector<string> LineGraph::getStops() const {
     return stops;
 }
 
-double LineGraph::getStopLatitude(int node) const {
-    return this->stops[node].latitude;
-}
-
-double LineGraph::getStopLongitude(int node) const {
-    return this->stops[node].longitude;
-}
-
 const map<string, int>& LineGraph::getStopsInfo() const {
     return stopsInfo;
 }
 
-void LineGraph::setNode(const string &code, const string &name, const string &zone, const double &latitude, const double &longitude) {
+void LineGraph::setNode(const string &code) {
     int nodeIndex = stopsInfo.size() + 1;
     stopsInfo.insert({code,nodeIndex});
     stops.at(nodeIndex).stopCode = code;
-    stops.at(nodeIndex).stopName = name;
-    stops.at(nodeIndex).zone = zone;
-    stops.at(nodeIndex).latitude = latitude;
-    stops.at(nodeIndex).longitude = longitude;
 }
 
 void LineGraph::addEdge(int src, double weight, int dest) {
@@ -63,7 +51,7 @@ double LineGraph::calculateDistance(double latitude1, double longitude1, double 
 }
 
 //bfs
-int LineGraph::findPath(const MinHeap<string, double>& stopsNearEnd, int source) {
+int LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source) {
     for (Node n: stops)
         n.visited = false;
 
