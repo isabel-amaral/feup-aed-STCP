@@ -102,17 +102,31 @@ public:
      */
     void addEdge(int src, double weight, int dest);
 
+    /**
+     * Estrtura de dados auxiliar que armazena a informação a devolver no algoritmo findPathWhithinSameLine.
+     */
     struct Result {
+        /**
+         * Número de paragens do percurso.
+         */
         int count;
+        /**
+         * Distância total percorrida de autocarro durante o percurso.
+         */
         double distance;
+        /**
+         * Código da paragem onde o percurso terminou.
+         */
         string endStop;
     };
     /**
-     * //TODO
+     * Encontra, dentro da mesma linha, o melhor percurso desde uma determinada paragem inicial até
+     * uma paragem final dentro de um possível conjunto (stopsNearEnd). Este algoritmo usa uma variação do bfs.
      * @param stopsNearEnd fila de prioridade com todas as paragens próximas do ponto final
      * a ser consideradas como possíveis paragens de destino
      * @param source pragaem onde o algoritmo será iniciado
-     * @return //TODO
+     * @return Estrutura de dados (struct Result) que contém informação sobre
+     * o nº de paragens e distância percorridas e a paragem final do percurso
      */
     Result findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source);
 };

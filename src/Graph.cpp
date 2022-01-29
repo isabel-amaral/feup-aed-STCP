@@ -238,19 +238,6 @@ list<int> Graph::findClosestStops(double latitude, double longitude) {
     return closestStops;
 }
 
-int Graph::findClosestStop(double latitude, double longitude) {
-    double minDistance = LONG_MAX;
-    int closestStopIndex;
-    for(int v = 1; v < stops.size(); v++) {
-        double distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
-        if(distance < minDistance) {
-            minDistance = distance;
-            closestStopIndex = v + 1;
-        }
-    }
-    return closestStopIndex;
-}
-
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);

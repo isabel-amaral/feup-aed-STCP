@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['walkingdistance_0',['walkingDistance',['../class_graph.html#af10e78c8ec53746aed3099ca986d6e06',1,'Graph::walkingDistance()'],['../class_lines.html#af7367cd08a702e86f5b0fdf9f54c3a77',1,'Lines::walkingDistance()']]],
-  ['weight_1',['weight',['../struct_graph_1_1_edge.html#a9acc7410b39c9cb4101b55166c45bac6',1,'Graph::Edge::weight()'],['../struct_line_graph_1_1_edge.html#a0f1d1983f16bd3693f28885bcf053691',1,'LineGraph::Edge::weight()']]]
+  ['stopcode_0',['stopCode',['../struct_graph_1_1_node.html#a98bac7c042f28cb8ebb6e3115eeca187',1,'Graph::Node::stopCode()'],['../struct_line_graph_1_1_node.html#a3c93d00df7fda98a2714cd4abd3f77a0',1,'LineGraph::Node::stopCode()']]],
+  ['stopname_1',['stopName',['../struct_graph_1_1_node.html#aed5e015705c131f2ea6810ef13494a22',1,'Graph::Node']]],
+  ['stops_2',['stops',['../class_graph.html#af03123c267ac2a913293c8982ceb943b',1,'Graph::stops()'],['../class_line_graph.html#af6a9fed28a78c32a10f2ba2f8a5c9c4c',1,'LineGraph::stops()']]],
+  ['stopsinfo_3',['stopsInfo',['../class_graph.html#abb5f93a5c2fbf37f72f996615b8308a6',1,'Graph::stopsInfo()'],['../class_line_graph.html#ae8d99601436b2178f108cee769b3dc2c',1,'LineGraph::stopsInfo()']]]
 ];

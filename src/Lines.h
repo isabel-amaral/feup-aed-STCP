@@ -67,7 +67,15 @@ public:
      * @param longitude2 longitude do destino.
      */
     void getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO
+    /**
+     * Imprime informação sobre o percurso de uma local para outro sem nunca mudar de autocarro.
+     * Imprime o nº de paragens e distância que o percorridas, o código e nome da linha que deve ser apanhada
+     * e o código e nome das várias paragens por onde passa.
+     * @param numStops nº de paragens percorridas.
+     * @param distance distância percorrida.
+     * @param line linha que será utilizada.
+     * @param startStop paragem de início do percurso.
+     */
     void showShortestPathWithinSameLine(int numStops, double distance, string line, string startStop) const;
 };
 

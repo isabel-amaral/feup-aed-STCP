@@ -119,8 +119,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa67a74d3d430465399cfd08d0243049e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a610e18f9c58f1a7e0a1fa0684faa9ed7"><td class="memItemLeft" align="right" valign="top">list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a610e18f9c58f1a7e0a1fa0684faa9ed7">findClosestStops</a> (double latitude, double longitude)</td></tr>
 <tr class="separator:a610e18f9c58f1a7e0a1fa0684faa9ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e3c4061f49174326c408ff717c5a6f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a3e3c4061f49174326c408ff717c5a6f5">findClosestStop</a> (double latitude, double longitude)</td></tr>
-<tr class="separator:a3e3c4061f49174326c408ff717c5a6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a773806dfc861a98f1f506334467df136"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a773806dfc861a98f1f506334467df136">bfsDistance</a> (int a, int b)</td></tr>
 <tr class="separator:a773806dfc861a98f1f506334467df136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a128fdc56501396a0c6058cdce15bdf2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a128fdc56501396a0c6058cdce15bdf2b">bfsZone</a> (int a, int b)</td></tr>
@@ -131,15 +129,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6ec791a4aa0f010c62bf6a36b685574a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33bdf6bcb7c588ca11b66d6727308f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a33bdf6bcb7c588ca11b66d6727308f99">getLowestZoneChanges</a> (double latitude1, double longitude1, double latitude2, double longitude2)</td></tr>
 <tr class="separator:a33bdf6bcb7c588ca11b66d6727308f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a434b3de9d28f3d737c852046ace9f2e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a434b3de9d28f3d737c852046ace9f2e2">showMinimumStopsPath</a> (vector&lt; int &gt; path) const</td></tr>
-<tr class="separator:a434b3de9d28f3d737c852046ace9f2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9bdde6f62a5ada1597c22ba91e4716a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ad9bdde6f62a5ada1597c22ba91e4716a">showShortestPathChangingLines</a> (list&lt; int &gt; path) const</td></tr>
-<tr class="separator:ad9bdde6f62a5ada1597c22ba91e4716a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0c6c877c41c6ea23875c88909cc2a85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ae0c6c877c41c6ea23875c88909cc2a85">showLowestLineChanges</a> () const</td></tr>
-<tr class="separator:ae0c6c877c41c6ea23875c88909cc2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad91fc58e7a87bfc46c261068cd7fec3e"><td class="memItemLeft" align="right" valign="top"><a id="ad91fc58e7a87bfc46c261068cd7fec3e" name="ad91fc58e7a87bfc46c261068cd7fec3e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showLowestZoneChanges</b> (vector&lt; int &gt; path) const</td></tr>
-<tr class="separator:ad91fc58e7a87bfc46c261068cd7fec3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab816509e72c57ec4ed5b476d8dd98796"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ab816509e72c57ec4ed5b476d8dd98796">showMinimumStopsPath</a> (vector&lt; int &gt; path, double distance1, double distance2) const</td></tr>
+<tr class="separator:ab816509e72c57ec4ed5b476d8dd98796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9183af85d58066e1ec27bb59135132"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#adf9183af85d58066e1ec27bb59135132">showShortestPathChangingLines</a> (vector&lt; int &gt; path, double distance1, double distance2) const</td></tr>
+<tr class="separator:adf9183af85d58066e1ec27bb59135132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfb8379a39d481a8dcd50045ead7978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aedfb8379a39d481a8dcd50045ead7978">showLowestZoneChanges</a> (vector&lt; int &gt; path, double distance1, double distance2) const</td></tr>
+<tr class="separator:aedfb8379a39d481a8dcd50045ead7978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b0c61248d6bfdaa93c8661dbfac4a58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4b0c61248d6bfdaa93c8661dbfac4a58">showPath</a> (vector&lt; int &gt; path, double distance1, double distance2) const</td></tr>
+<tr class="separator:a4b0c61248d6bfdaa93c8661dbfac4a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -331,7 +328,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p >Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>nó de partida </td></tr>
+    <tr><td class="paramname">a</td><td>nó de partida. </td></tr>
     <tr><td class="paramname">b</td><td>nó de chegada </td></tr>
   </table>
   </dd>
@@ -366,8 +363,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p >Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td></td></tr>
-    <tr><td class="paramname">b</td><td></td></tr>
+    <tr><td class="paramname">a</td><td>nó de partida. </td></tr>
+    <tr><td class="paramname">b</td><td>nó de chegada. </td></tr>
   </table>
   </dd>
 </dl>
@@ -429,42 +426,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Distância entre os dois pontos. </dd></dl>
-
-</div>
-</div>
-<a id="a3e3c4061f49174326c408ff717c5a6f5" name="a3e3c4061f49174326c408ff717c5a6f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e3c4061f49174326c408ff717c5a6f5">&#9670;&nbsp;</a></span>findClosestStop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Graph::findClosestStop </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>latitude</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>longitude</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Determina, com base no atributo walkingDistance, a paragem mais próxima à um determindado local, a partir da latitude e longitude do mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">latitude</td><td>latitude do local. </td></tr>
-    <tr><td class="paramname">longitude</td><td>longitude do local. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Inteiro referente a representação interna da paragem mais próxima ao local. </dd></dl>
 
 </div>
 </div>
@@ -559,7 +520,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Determina com recurso ao algortimo <a class="el" href="class_graph.html#a128fdc56501396a0c6058cdce15bdf2b">bfsZone()</a>, qual o caminho entre dois locais (partida e destino) percorre menor número de zonas. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Determina com recurso ao algortimo <a class="el" href="class_graph.html#a128fdc56501396a0c6058cdce15bdf2b">bfsZone()</a>, qual o caminho entre dois locais (partida e destino) que percorre menor número de zonas. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do local de partida. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do local de partida. </td></tr>
@@ -959,26 +920,50 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae0c6c877c41c6ea23875c88909cc2a85" name="ae0c6c877c41c6ea23875c88909cc2a85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0c6c877c41c6ea23875c88909cc2a85">&#9670;&nbsp;</a></span>showLowestLineChanges()</h2>
+<a id="aedfb8379a39d481a8dcd50045ead7978" name="aedfb8379a39d481a8dcd50045ead7978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfb8379a39d481a8dcd50045ead7978">&#9670;&nbsp;</a></span>showLowestZoneChanges()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Graph::showLowestLineChanges </td>
+          <td class="memname">void Graph::showLowestZoneChanges </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Imprime na tela a distância, o número de vezes que muda de autocarro e o respetivo caminho que o utilizador deve seguir de modo a efetuar menos mudanças de autocarro (linha) possíveis. </p>
+<p >Imprime no ecrã o número total de zonas que serão percorridas e o respetivo caminho que o utilizador deve seguir de modo que o custo seja o mais barato possível (menos zonas). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
+    <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a434b3de9d28f3d737c852046ace9f2e2" name="a434b3de9d28f3d737c852046ace9f2e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a434b3de9d28f3d737c852046ace9f2e2">&#9670;&nbsp;</a></span>showMinimumStopsPath()</h2>
+<a id="ab816509e72c57ec4ed5b476d8dd98796" name="ab816509e72c57ec4ed5b476d8dd98796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab816509e72c57ec4ed5b476d8dd98796">&#9670;&nbsp;</a></span>showMinimumStopsPath()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -987,22 +972,82 @@ Private Attributes</h2></td></tr>
           <td class="memname">void Graph::showMinimumStopsPath </td>
           <td>(</td>
           <td class="paramtype">vector&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Imprime na tela o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Imprime no ecrã o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>Lista de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
+    <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ad9bdde6f62a5ada1597c22ba91e4716a" name="ad9bdde6f62a5ada1597c22ba91e4716a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9bdde6f62a5ada1597c22ba91e4716a">&#9670;&nbsp;</a></span>showShortestPathChangingLines()</h2>
+<a id="a4b0c61248d6bfdaa93c8661dbfac4a58" name="a4b0c61248d6bfdaa93c8661dbfac4a58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0c61248d6bfdaa93c8661dbfac4a58">&#9670;&nbsp;</a></span>showPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::showPath </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Imprime de forma detalhada (linha, paragem, etc) o caminho que o utilizador deve seguir desde a sua posição inicial até ao seu destino final. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
+    <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adf9183af85d58066e1ec27bb59135132" name="adf9183af85d58066e1ec27bb59135132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9183af85d58066e1ec27bb59135132">&#9670;&nbsp;</a></span>showShortestPathChangingLines()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1010,15 +1055,33 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Graph::showShortestPathChangingLines </td>
           <td>(</td>
-          <td class="paramtype">list&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Imprime na tela a distância, o número de vezes que muda de autocarro e o respetivo caminho que o utilizador deve seguir de modo a percorrer menor distância possível. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Imprime no ecrã a distância e o respetivo caminho que o utilizador deve seguir de modo a percorrer menor distância possível. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>Lista de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
+    <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
+    <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
   </table>
   </dd>
 </dl>
