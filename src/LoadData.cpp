@@ -88,10 +88,8 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode, string 
                                            buses.getStopLatitude(d), buses.getStopLongitude(d));
         buses.addEdge(s, lineCode, distance, d);
 
-        line.setNode(sourceCode, buses.getStopName(s),buses.getStopZone(s),
-                     buses.getStopLatitude(s), buses.getStopLongitude(s));
-        line.setNode(destCode, buses.getStopName(d),buses.getStopZone(d),
-                     buses.getStopLatitude(d), buses.getStopLongitude(d));
+        line.setNode(sourceCode);
+        line.setNode(destCode);
         line.addEdge(line.getStopsInfo().at(sourceCode), distance, line.getStopsInfo().at(destCode));
 
         sourceCode = destCode;
@@ -104,10 +102,8 @@ void LoadData::readInfoFromLine(const string& filename, string lineCode, string 
         distance = Graph::calculateDistance(buses.getStopLatitude(s), buses.getStopLongitude(s),
                                             buses.getStopLatitude(d), buses.getStopLatitude(d));
         buses.addEdge(s, lineCode, distance, d);
-        line.setNode(sourceCode, buses.getStopName(s),buses.getStopZone(s),
-                     buses.getStopLatitude(s), buses.getStopLongitude(s));
-        line.setNode(destCode, buses.getStopName(d),buses.getStopZone(d),
-                     buses.getStopLatitude(d), buses.getStopLongitude(d));
+        line.setNode(sourceCode);
+        line.setNode(destCode);
         line.addEdge(line.getStopsInfo().at(sourceCode), distance, line.getStopsInfo().at(destCode));
     }
     lines.push_back(line);

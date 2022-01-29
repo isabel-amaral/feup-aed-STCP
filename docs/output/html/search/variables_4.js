@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pred_0',['pred',['../struct_graph_1_1_node.html#a09f5571b617c4763e2b74ef1a83232c8',1,'Graph::Node']]]
+  ['n_0',['n',['../class_graph.html#a81a76a428e630453ef019a15b9092967',1,'Graph::n()'],['../class_line_graph.html#a917e9b0ef0be6f2205ae31bfc17f7f6a',1,'LineGraph::n()']]],
+  ['numzones_1',['numZones',['../struct_graph_1_1_node.html#a43ead6c02f38e62bbc986a21a99a164d',1,'Graph::Node']]]
 ];

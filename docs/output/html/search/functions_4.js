@@ -15,6 +15,5 @@ var searchData=
   ['getstopname_12',['getStopName',['../class_graph.html#a297d6d306a46d36e4baa997c4a07587a',1,'Graph']]],
   ['getstops_13',['getStops',['../class_graph.html#aa23bb419b181a2bfac9e2c17177154ea',1,'Graph::getStops()'],['../class_line_graph.html#a46925d2bf87bb872cf7d5a202aedb567',1,'LineGraph::getStops()']]],
   ['getstopsinfo_14',['getStopsInfo',['../class_graph.html#a365832fb1001138cd731fdbc8e6b7ab1',1,'Graph::getStopsInfo()'],['../class_line_graph.html#a44c6e3c358eeb0b18c20adf0e5505a27',1,'LineGraph::getStopsInfo()']]],
-  ['getstopzone_15',['getStopZone',['../class_graph.html#a2b50cbbbfe3c993021b62d553787bbc0',1,'Graph']]],
-  ['graph_16',['Graph',['../class_graph.html',1,'']]]
+  ['getstopzone_15',['getStopZone',['../class_graph.html#a2b50cbbbfe3c993021b62d553787bbc0',1,'Graph']]]
 ];
