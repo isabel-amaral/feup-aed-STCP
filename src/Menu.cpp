@@ -104,11 +104,10 @@ void Menu::menu2() {
     cout << "1. Percurso que passa por menos paragens" << endl;
     cout << "2. Percurso mais curto sem mudancas de linha" << endl;
     cout << "3. Percurso mais curto com mudancas de linha" << endl;
-    //cout << "4. Percurso mais barato (que passa por menos zonas)" << endl;
+    cout << "4. Percurso mais barato (que passa por menos zonas)" << endl;
     cout << "0. voltar" << endl;
     cout << "ESCOLHA UMA OPCAO: ";
-    readOption(0, 3);
-    //readOption(0, 4);
+    readOption(0, 4);
 
     if(option == 0) {
         menu0();
@@ -136,6 +135,8 @@ void Menu::menu2() {
 
     else if (option == 3)
         buses.getShortestPathChangingLines(latitude1, longitude1, latitude2, longitude2);
+    else if (option == 4)
+        buses.getLowestZoneChanges(latitude1, longitude1, latitude2, longitude2);
 
     cout << endl;
     option = lastMenu.top();

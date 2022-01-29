@@ -193,8 +193,9 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
         }
     }
 
+    double distance1 = 0, distance2 = 0;
     if (start == 0 && end == 0){    // Se foi encontrado um caminho
-        showMinimumStopsPath(result);
+        showMinimumStopsPath(result, distance1, distance2);
         return;
     }
     bfsDistance(start, end);
@@ -204,49 +205,23 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
         result.insert(result.begin(), parent);
         parent = stops.at(parent).pred;
     }
-    showMinimumStopsPath(result);
+
+
+    if (!result.empty()){
+        distance1 = calculateDistance(latitude1, longitude1, getStopLatitude(result.front()), getStopLongitude(result.front()));
+        distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(result.back()), getStopLongitude(result.back()));
+    }
+    showMinimumStopsPath(result, distance1, distance2);
+
 }
 
-void Graph::showMinimumStopsPath(vector<int> path) const {
-    int lastStop = path.back();
-    string lastLine = "0";
-
+void Graph::showMinimumStopsPath(vector<int> path, double distance1, double distance2) const {
     if (path.empty()){
-        cout << "Nao foi encontrado nenhum caminho.";
+        cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-
-    cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
-    for (auto i = 0; i < path.size() -1; i++) {
-        int index = path[i];
-        for (const auto& ad : stops[index].adj){
-            if (ad.dest != path[i+1])
-                continue;
-            string line = ad.lineCode;
-            if (!line.empty()) {
-                if (line != lastLine){
-                    if (index != path.front()){
-                        cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
-                        cout << "Descer em " << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
-                    }
-                    cout << "Esperar pela linha " << line << endl << endl;
-                    lastLine = line;
-                }
-                cout << line << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
-                break;
-            }
-            else {
-                int nextStop = path[i+1];
-                cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
-                cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
-                break;
-            }
-        }
-    }
-
-    cout << lastLine << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl << endl;
-    cout << "Descer em " << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
-    cout << "Caminhe ate ao seu destino." << endl;
+    cout << "\nEste caminho passa por um total de " << stops[path.back()].dist + 1 << " paragens." << endl;
+    showPath(path, distance1, distance2);
 }
 
 list<int> Graph::findClosestStops(double latitude, double longitude) {
@@ -326,7 +301,21 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
     }
     removePositionNode(stopsNearEnd);
     removePositionNode(stopsNearStart);
-    showMinimumStopsPath(path);
+    double distance1, distance2;
+    if (!path.empty()){
+        distance1 = stops[path.front()].dist;
+        distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(path.back()), getStopLongitude(path.back()));
+    }
+    showShortestPathChangingLines(path, distance1, distance2);
+}
+
+void Graph::showShortestPathChangingLines(vector<int> path, double distance1, double distance2) const {
+    if (path.empty()){
+        cout << "Nao foi encontrado nenhum caminho." << endl;
+        return;
+    }
+    cout << "\nEste caminho percorre um total de " << stops[path.back()].dist + distance2 << " metros." << endl;
+    showPath(path, distance1, distance2);
 }
 
 void Graph::getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2) {
@@ -349,14 +338,60 @@ void Graph::getLowestZoneChanges(double latitude1, double longitude1, double lat
     }
     removePositionNode(stopsNearEnd);
     removePositionNode(stopsNearStart);
-    showLowestZoneChanges(path);
-
+    double distance1, distance2;
+    if (!path.empty()){
+        distance1 = calculateDistance(latitude1, longitude1, getStopLatitude(path.front()), getStopLongitude(path.front()));
+        distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(path.back()), getStopLongitude(path.back()));
+    }
+    showLowestZoneChanges(path, distance1, distance2);
 }
 
-//Todo: implementacao
-void Graph::showLowestZoneChanges(vector<int> path) const {
-
+void Graph::showLowestZoneChanges(vector<int> path, double distance1, double distance2) const {
+    if (path.empty()){
+        cout << "Nao foi encontrado nenhum caminho." << endl;
+        return;
+    }
+    cout << "\nEste caminho passa por um total de" << stops[path.back()].numZones << " zona(s)." << endl;
+    showPath(path, distance1, distance2);
 }
+
+void Graph::showPath(vector<int> path, double distance1, double distance2) const {
+    int lastStop = path.back();
+    string lastLine = "0";
+
+    cout << "Caminhe " << distance1 << " metros ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
+    for (auto i = 0; i < path.size() -1; i++) {
+        int index = path[i];
+        for (const auto& ad : stops[index].adj){
+            if (ad.dest != path[i+1])
+                continue;
+            string line = ad.lineCode;
+            if (!line.empty()) {
+                if (line != lastLine){
+                    if (index != path.front()){
+                        cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << " - " << stops[index].zone << endl << endl;
+                        cout << "Descer em " << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
+                    }
+                    cout << "Esperar pela linha " << line << endl << endl;
+                    lastLine = line;
+                }
+                cout << line << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << " - " << stops[index].zone << endl;
+                break;
+            }
+            else {
+                int nextStop = path[i+1];
+                cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << " - " << stops[index].zone << endl << endl;
+                cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
+                break;
+            }
+        }
+    }
+
+    cout << lastLine << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << " - " << stops[lastStop].zone << endl << endl;
+    cout << "Descer em " << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
+    cout << "Caminhe " << distance2 << " metros ate ao seu destino." << endl;
+}
+
 
 
 
