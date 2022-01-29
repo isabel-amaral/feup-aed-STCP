@@ -97,7 +97,8 @@ class Graph {
      */
     map<string, string> linesInfo;
     /**
-     * Distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem.
+     * Distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem
+     * ou para chegar da última paragem até ao seu destino.
      */
     double walkingDistance;
 
@@ -213,7 +214,7 @@ public:
      */
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
-     * Determina, com base no atributo walkingDistance, as paragens próximas à um determindado local, a partir da latitude e longitude do mesmo.
+     * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
      * @param latitude latitude do local.
      * @param longitude longitude do local.
      * @return Lista de inteiros que representam internamente cada uma das paragens próximas ao respetivo local.
