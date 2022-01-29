@@ -80,9 +80,9 @@ class Graph {
     };
 
     /**
-   * Tamanho do grafo.
-   * Cada paragem é representada internamente por um inteiro de 1 a n.
-   */
+    * Tamanho do grafo.
+    * Cada paragem é representada internamente por um inteiro de 1 a n.
+    */
     int n;
     /**
      * Todas as paragens da STCP respresentadas através de nós.
@@ -230,14 +230,14 @@ public:
     int findClosestStop(double latitude, double longitude);
     /**
      * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens.
-     * @param a nó de partida
+     * @param a nó de partida.
      * @param b nó de chegada
      */
     void bfsDistance(int a, int b);
     /**
      * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas.
-     * @param a
-     * @param b
+     * @param a nó de partida.
+     * @param b nó de chegada.
      */
     void bfsZone (int a, int b);
     /**

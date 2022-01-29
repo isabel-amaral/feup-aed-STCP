@@ -65,7 +65,7 @@ void Lines::getShortestPathWithinSameLine(double latitude1, double longitude1, d
             if (l == "")
                 continue;
             LineGraph currentLine = findCorrespondingLine(l, s);
-            int count = currentLine.findPath(stopsNearEnd, currentLine.getStopsInfo().at(s));
+            int count = currentLine.findPathWithinSameLine(stopsNearEnd, currentLine.getStopsInfo().at(s));
             if (count < countStops) {
                 countStops = count;
                 fasterLine = l;
