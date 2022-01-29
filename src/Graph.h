@@ -53,7 +53,6 @@ class Graph {
          * Longitude da paragem.
          */
         double longitude;
-
         /**
           * Lista dos segmentos de percurso que partem da paragem em questão.
           */
@@ -141,7 +140,11 @@ public:
      * @return Longitude de uma determinada paragem (nó) do grafo.
      */
     double getStopLongitude(int node) const;
-
+    /**
+     *
+     * @param node índice do nó do grafo.
+     * @return Lista de linhas que passam na paragem em questão.
+     */
     list<string> getStopLines(string node) const;
     /**
      *
@@ -224,9 +227,17 @@ public:
      * @return Inteiro referente a representação interna da paragem mais próxima ao local.
      */
     int findClosestStop(double latitude, double longitude);
-    //TODO: DOCUMENTACAO
+    /**
+     * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens.
+     * @param a nó de partida
+     * @param b nó de chegada
+     */
     void bfsDistance(int a, int b);
-    //TODO: DOCUMENTACAO
+    /**
+     * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas.
+     * @param a
+     * @param b
+     */
     void bfsZone (int a, int b);
     /**
      * Determina, com recurso ao algoritmo bfsDistance(), qual o caminho entre dois locais (partida e destino) que passa por menos paragens.
@@ -245,9 +256,13 @@ public:
      * @param longitude2 longitude do destino.
      */
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
-    // TODO: DOCUMENTACAO; QUE ALGORITMO USOU-SE ETC
-    void getLowestLineChanges(double latitude, double longitude);
-    //TODO: DOCUMENTACAO
+    /**
+     * Determina com recurso ao algortimo bfsZone(), qual o caminho entre dois locais (partida e destino) percorre menor número de zonas.
+     * @param latitude1 latitude do local de partida.
+     * @param longitude1 longitude do local de partida.
+     * @param latitude2 latitude do destino.
+     * @param longitude2 longitude do destino.
+     */
     void getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2);
     //TODO: MELHORAR O COUT: INDICAR QUE DEVE MUDAR DE AUTOCARRO E IMPRIMIR O NUMERO DE PARAGENS QUE IRÁ PERCORRER
     /**
@@ -262,13 +277,11 @@ public:
      * @param path Lista de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
      */
     void showShortestPathChangingLines(list<int> path) const;
-    //TODO: IMPLEMENTACAO
     /**
      * Imprime na tela a distância, o número de vezes que muda de autocarro e o respetivo
      * caminho que o utilizador deve seguir de modo a efetuar menos mudanças de autocarro (linha) possíveis.
      */
     void showLowestLineChanges() const;
-
     //TODO: DOCUMENTACAO
     void showLowestZoneChanges(vector <int> path) const;
 };

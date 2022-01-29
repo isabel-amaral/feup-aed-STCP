@@ -329,21 +329,6 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
     showMinimumStopsPath(path);
 }
 
-void Graph::showShortestPathChangingLines(list<int> path) const {
-    for (auto p: path){
-        cout << stops[p].stopCode << "-" << stops[p].stopName<<endl;
-    }
-}
-
-void Graph::getLowestLineChanges(double latitude, double longitude) {
-    //TODO
-    showLowestLineChanges();
-}
-
-void Graph::showLowestLineChanges() const {
-
-}
-
 void Graph::getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2) {
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
@@ -353,7 +338,7 @@ void Graph::getLowestZoneChanges(double latitude1, double longitude1, double lat
     int destinationIndex = stops.size() - 1;
     vector<int> path;
 
-    bfsDistance(originIndex, destinationIndex);
+    bfsZone(originIndex, destinationIndex);
 
     if (stops[destinationIndex].visited) {
         int parent = stops[destinationIndex].pred;
