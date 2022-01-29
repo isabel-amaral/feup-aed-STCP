@@ -122,6 +122,10 @@ public:
     /**
      * Encontra, dentro da mesma linha, o melhor percurso desde uma determinada paragem inicial até
      * uma paragem final dentro de um possível conjunto (stopsNearEnd). Este algoritmo usa uma variação do bfs.
+     *
+     * time complexity: O(n + e)
+     * n: number of stops in the current line
+     * e: number of edges in the current line's graph (number of connections between stops)
      * @param stopsNearEnd fila de prioridade com todas as paragens próximas do ponto final
      * a ser consideradas como possíveis paragens de destino
      * @param source pragaem onde o algoritmo será iniciado
