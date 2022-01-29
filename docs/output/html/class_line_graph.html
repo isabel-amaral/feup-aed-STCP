@@ -66,7 +66,6 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_line_graph-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LineGraph Class Reference</div></div>
@@ -83,60 +82,327 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0fc560c952cfb458d567939deb7f282f"><td class="memItemLeft" align="right" valign="top"><a id="a0fc560c952cfb458d567939deb7f282f" name="a0fc560c952cfb458d567939deb7f282f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LineGraph</b> (const string &amp;lineCode, const string &amp;lineName, int n)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LineGraph</b> (const string &amp;<a class="el" href="class_line_graph.html#a085268982a80b6dd2f88a0a7f3597b3c">lineCode</a>, const string &amp;<a class="el" href="class_line_graph.html#af98a53a1f0d9abe11caf36635ab1cd87">lineName</a>, int <a class="el" href="class_line_graph.html#a917e9b0ef0be6f2205ae31bfc17f7f6a">n</a>)</td></tr>
 <tr class="separator:a0fc560c952cfb458d567939deb7f282f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af41a9a8fd79d20691655681eb9457fc2"><td class="memItemLeft" align="right" valign="top"><a id="af41a9a8fd79d20691655681eb9457fc2" name="af41a9a8fd79d20691655681eb9457fc2"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>getLineCode</b> () const</td></tr>
+<tr class="memitem:af41a9a8fd79d20691655681eb9457fc2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#af41a9a8fd79d20691655681eb9457fc2">getLineCode</a> () const</td></tr>
 <tr class="separator:af41a9a8fd79d20691655681eb9457fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af843fe860d4379a6c4dcf40d2f671623"><td class="memItemLeft" align="right" valign="top"><a id="af843fe860d4379a6c4dcf40d2f671623" name="af843fe860d4379a6c4dcf40d2f671623"></a>
-const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLineName</b> () const</td></tr>
+<tr class="memitem:af843fe860d4379a6c4dcf40d2f671623"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#af843fe860d4379a6c4dcf40d2f671623">getLineName</a> () const</td></tr>
 <tr class="separator:af843fe860d4379a6c4dcf40d2f671623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46925d2bf87bb872cf7d5a202aedb567"><td class="memItemLeft" align="right" valign="top"><a id="a46925d2bf87bb872cf7d5a202aedb567" name="a46925d2bf87bb872cf7d5a202aedb567"></a>
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStops</b> () const</td></tr>
+<tr class="memitem:a46925d2bf87bb872cf7d5a202aedb567"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#a46925d2bf87bb872cf7d5a202aedb567">getStops</a> () const</td></tr>
 <tr class="separator:a46925d2bf87bb872cf7d5a202aedb567"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac37b7cbc20801f6a6bc2f1dd524b6b59"><td class="memItemLeft" align="right" valign="top"><a id="ac37b7cbc20801f6a6bc2f1dd524b6b59" name="ac37b7cbc20801f6a6bc2f1dd524b6b59"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLatitude</b> (int node) const</td></tr>
-<tr class="separator:ac37b7cbc20801f6a6bc2f1dd524b6b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eef8b63a24bdc35ad92c34d4fa5ca6f"><td class="memItemLeft" align="right" valign="top"><a id="a6eef8b63a24bdc35ad92c34d4fa5ca6f" name="a6eef8b63a24bdc35ad92c34d4fa5ca6f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getStopLongitude</b> (int node) const</td></tr>
-<tr class="separator:a6eef8b63a24bdc35ad92c34d4fa5ca6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44c6e3c358eeb0b18c20adf0e5505a27"><td class="memItemLeft" align="right" valign="top"><a id="a44c6e3c358eeb0b18c20adf0e5505a27" name="a44c6e3c358eeb0b18c20adf0e5505a27"></a>
-const map&lt; string, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getStopsInfo</b> () const</td></tr>
+<tr class="memitem:a44c6e3c358eeb0b18c20adf0e5505a27"><td class="memItemLeft" align="right" valign="top">const map&lt; string, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#a44c6e3c358eeb0b18c20adf0e5505a27">getStopsInfo</a> () const</td></tr>
 <tr class="separator:a44c6e3c358eeb0b18c20adf0e5505a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d3c095d75bb7d5a56595e101f390acb"><td class="memItemLeft" align="right" valign="top"><a id="a1d3c095d75bb7d5a56595e101f390acb" name="a1d3c095d75bb7d5a56595e101f390acb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNode</b> (const string &amp;code, const string &amp;name, const string &amp;zone, const double &amp;latitude, const double &amp;longitude)</td></tr>
-<tr class="separator:a1d3c095d75bb7d5a56595e101f390acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af306b7e6ec1d2387c90b972967d81120"><td class="memItemLeft" align="right" valign="top"><a id="af306b7e6ec1d2387c90b972967d81120" name="af306b7e6ec1d2387c90b972967d81120"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (int src, double weight, int dest)</td></tr>
+<tr class="memitem:a30b4e35e76dcc45a54617cdb52f252c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#a30b4e35e76dcc45a54617cdb52f252c5">setNode</a> (const string &amp;code)</td></tr>
+<tr class="separator:a30b4e35e76dcc45a54617cdb52f252c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af306b7e6ec1d2387c90b972967d81120"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#af306b7e6ec1d2387c90b972967d81120">addEdge</a> (int src, double weight, int dest)</td></tr>
 <tr class="separator:af306b7e6ec1d2387c90b972967d81120"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4de844715b2c18b299b97e543787a84"><td class="memItemLeft" align="right" valign="top"><a id="ae4de844715b2c18b299b97e543787a84" name="ae4de844715b2c18b299b97e543787a84"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>findPath</b> (const <a class="el" href="class_min_heap.html">MinHeap</a>&lt; string, double &gt; &amp;stopsNearEnd, int source)</td></tr>
-<tr class="separator:ae4de844715b2c18b299b97e543787a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a219b76617b4bc6df07bb702759378f76"><td class="memItemLeft" align="right" valign="top"><a id="a219b76617b4bc6df07bb702759378f76" name="a219b76617b4bc6df07bb702759378f76"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateDistance</b> (double latitude1, double longitude1, double latitude2, double longitude2)</td></tr>
-<tr class="separator:a219b76617b4bc6df07bb702759378f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34d170675d1617e6e9540aefbbea0b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#ab34d170675d1617e6e9540aefbbea0b5">findPathWithinSameLine</a> (const <a class="el" href="class_min_heap.html">MinHeap</a>&lt; string, double &gt; &amp;stopsNearEnd, int source)</td></tr>
+<tr class="separator:ab34d170675d1617e6e9540aefbbea0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a085268982a80b6dd2f88a0a7f3597b3c"><td class="memItemLeft" align="right" valign="top"><a id="a085268982a80b6dd2f88a0a7f3597b3c" name="a085268982a80b6dd2f88a0a7f3597b3c"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>lineCode</b></td></tr>
+<tr class="memitem:a085268982a80b6dd2f88a0a7f3597b3c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#a085268982a80b6dd2f88a0a7f3597b3c">lineCode</a></td></tr>
 <tr class="separator:a085268982a80b6dd2f88a0a7f3597b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af98a53a1f0d9abe11caf36635ab1cd87"><td class="memItemLeft" align="right" valign="top"><a id="af98a53a1f0d9abe11caf36635ab1cd87" name="af98a53a1f0d9abe11caf36635ab1cd87"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>lineName</b></td></tr>
+<tr class="memitem:af98a53a1f0d9abe11caf36635ab1cd87"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#af98a53a1f0d9abe11caf36635ab1cd87">lineName</a></td></tr>
 <tr class="separator:af98a53a1f0d9abe11caf36635ab1cd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a917e9b0ef0be6f2205ae31bfc17f7f6a"><td class="memItemLeft" align="right" valign="top"><a id="a917e9b0ef0be6f2205ae31bfc17f7f6a" name="a917e9b0ef0be6f2205ae31bfc17f7f6a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+<tr class="memitem:a917e9b0ef0be6f2205ae31bfc17f7f6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#a917e9b0ef0be6f2205ae31bfc17f7f6a">n</a></td></tr>
 <tr class="separator:a917e9b0ef0be6f2205ae31bfc17f7f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6a9fed28a78c32a10f2ba2f8a5c9c4c"><td class="memItemLeft" align="right" valign="top"><a id="af6a9fed28a78c32a10f2ba2f8a5c9c4c" name="af6a9fed28a78c32a10f2ba2f8a5c9c4c"></a>
-vector&lt; <a class="el" href="struct_line_graph_1_1_node.html">Node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stops</b></td></tr>
+<tr class="memitem:af6a9fed28a78c32a10f2ba2f8a5c9c4c"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_line_graph_1_1_node.html">Node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#af6a9fed28a78c32a10f2ba2f8a5c9c4c">stops</a></td></tr>
 <tr class="separator:af6a9fed28a78c32a10f2ba2f8a5c9c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d99601436b2178f108cee769b3dc2c"><td class="memItemLeft" align="right" valign="top"><a id="ae8d99601436b2178f108cee769b3dc2c" name="ae8d99601436b2178f108cee769b3dc2c"></a>
-map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stopsInfo</b></td></tr>
+<tr class="memitem:ae8d99601436b2178f108cee769b3dc2c"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_line_graph.html#ae8d99601436b2178f108cee769b3dc2c">stopsInfo</a></td></tr>
 <tr class="separator:ae8d99601436b2178f108cee769b3dc2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af306b7e6ec1d2387c90b972967d81120" name="af306b7e6ec1d2387c90b972967d81120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af306b7e6ec1d2387c90b972967d81120">&#9670;&nbsp;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LineGraph::addEdge </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>inteiro que representa a paragem de origem. </td></tr>
+    <tr><td class="paramname">weight</td><td>distância entre as duas paragens a ser consideradas. </td></tr>
+    <tr><td class="paramname">dest</td><td>inteiro que representa a paragem de destino. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab34d170675d1617e6e9540aefbbea0b5" name="ab34d170675d1617e6e9540aefbbea0b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab34d170675d1617e6e9540aefbbea0b5">&#9670;&nbsp;</a></span>findPathWithinSameLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LineGraph::findPathWithinSameLine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_min_heap.html">MinHeap</a>&lt; string, double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>stopsNearEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>source</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >//TODO </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stopsNearEnd</td><td>fila de prioridade com todas as paragens próximas do ponto final a ser consideradas como possíveis paragens de destino </td></tr>
+    <tr><td class="paramname">source</td><td>pragaem onde o algoritmo será iniciado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>//TODO </dd></dl>
+
+</div>
+</div>
+<a id="af41a9a8fd79d20691655681eb9457fc2" name="af41a9a8fd79d20691655681eb9457fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41a9a8fd79d20691655681eb9457fc2">&#9670;&nbsp;</a></span>getLineCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LineGraph::getLineCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Código da linha do autocarro. </dd></dl>
+
+</div>
+</div>
+<a id="af843fe860d4379a6c4dcf40d2f671623" name="af843fe860d4379a6c4dcf40d2f671623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af843fe860d4379a6c4dcf40d2f671623">&#9670;&nbsp;</a></span>getLineName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; LineGraph::getLineName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Nome da linha do autocarro. </dd></dl>
+
+</div>
+</div>
+<a id="a46925d2bf87bb872cf7d5a202aedb567" name="a46925d2bf87bb872cf7d5a202aedb567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46925d2bf87bb872cf7d5a202aedb567">&#9670;&nbsp;</a></span>getStops()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; string &gt; LineGraph::getStops </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Vetor de inteiros que representam internamente cada uma das paragens (nós) do grafo. </dd></dl>
+
+</div>
+</div>
+<a id="a44c6e3c358eeb0b18c20adf0e5505a27" name="a44c6e3c358eeb0b18c20adf0e5505a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c6e3c358eeb0b18c20adf0e5505a27">&#9670;&nbsp;</a></span>getStopsInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const map&lt; string, int &gt; &amp; LineGraph::getStopsInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Estrutura de dados que mapeia o código de cada paragem ao respetivo inteiro usado para representar a paragem internamente. </dd></dl>
+
+</div>
+</div>
+<a id="a30b4e35e76dcc45a54617cdb52f252c5" name="a30b4e35e76dcc45a54617cdb52f252c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30b4e35e76dcc45a54617cdb52f252c5">&#9670;&nbsp;</a></span>setNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LineGraph::setNode </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Adiciona um novo nó (paragem) ao grafo. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>é p código da paragem </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a085268982a80b6dd2f88a0a7f3597b3c" name="a085268982a80b6dd2f88a0a7f3597b3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a085268982a80b6dd2f88a0a7f3597b3c">&#9670;&nbsp;</a></span>lineCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LineGraph::lineCode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Código da linha do autocarro. </p>
+
+</div>
+</div>
+<a id="af98a53a1f0d9abe11caf36635ab1cd87" name="af98a53a1f0d9abe11caf36635ab1cd87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af98a53a1f0d9abe11caf36635ab1cd87">&#9670;&nbsp;</a></span>lineName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LineGraph::lineName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Nome da linha do autocarro. </p>
+
+</div>
+</div>
+<a id="a917e9b0ef0be6f2205ae31bfc17f7f6a" name="a917e9b0ef0be6f2205ae31bfc17f7f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917e9b0ef0be6f2205ae31bfc17f7f6a">&#9670;&nbsp;</a></span>n</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LineGraph::n</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Tamanho do grafo. Cada paragem é representada internamente por um inteiro de 1 a n. </p>
+
+</div>
+</div>
+<a id="af6a9fed28a78c32a10f2ba2f8a5c9c4c" name="af6a9fed28a78c32a10f2ba2f8a5c9c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a9fed28a78c32a10f2ba2f8a5c9c4c">&#9670;&nbsp;</a></span>stops</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="struct_line_graph_1_1_node.html">Node</a>&gt; LineGraph::stops</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Todas as paragens da linha em questão respresentadas através de nós. </p>
+
+</div>
+</div>
+<a id="ae8d99601436b2178f108cee769b3dc2c" name="ae8d99601436b2178f108cee769b3dc2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8d99601436b2178f108cee769b3dc2c">&#9670;&nbsp;</a></span>stopsInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, int&gt; LineGraph::stopsInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Estrutura de dados que mapeia o código de cada paragem ao respetivo inteiro usado para representar a paragem internamente. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/<a class="el" href="_line_graph_8h_source.html">LineGraph.h</a></li>
 <li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/LineGraph.cpp</li>

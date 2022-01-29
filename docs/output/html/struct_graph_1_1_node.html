@@ -94,6 +94,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a09f5571b617c4763e2b74ef1a83232c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2360e752c746736f533bc4e673c1f80d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_graph_1_1_node.html#a2360e752c746736f533bc4e673c1f80d">visited</a></td></tr>
 <tr class="separator:a2360e752c746736f533bc4e673c1f80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ead6c02f38e62bbc986a21a99a164d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_graph_1_1_node.html#a43ead6c02f38e62bbc986a21a99a164d">numZones</a></td></tr>
+<tr class="separator:a43ead6c02f38e62bbc986a21a99a164d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Cada nó representa uma paragem de autocarro da STCP. </p>
@@ -109,7 +111,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >lista dos segmentos de percurso que partem da paragem em questão </p>
+<p >Lista dos segmentos de percurso que partem da paragem em questão. </p>
 
 </div>
 </div>
@@ -124,7 +126,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >atributo de auxílio ao algoritmo de Djikstra: distância da paragem à origem do percurso </p>
+<p >Atributo de auxílio ao algoritmo de Djikstra: distância da paragem à origem do percurso. </p>
 
 </div>
 </div>
@@ -139,7 +141,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >latitude da paragem </p>
+<p >Latitude da paragem. </p>
 
 </div>
 </div>
@@ -154,7 +156,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >longitude da paragem </p>
+<p >Longitude da paragem. </p>
+
+</div>
+</div>
+<a id="a43ead6c02f38e62bbc986a21a99a164d" name="a43ead6c02f38e62bbc986a21a99a164d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43ead6c02f38e62bbc986a21a99a164d">&#9670;&nbsp;</a></span>numZones</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Graph::Node::numZones</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Atributo de auxílio ao Bfs: número de zonas percorridas desde a origem do percurso. </p>
 
 </div>
 </div>
@@ -169,7 +186,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >atributo de auxílio ao algoritmo de Djikstra: paragem predecedente da paragem em questão no percurso a ser considerado </p>
+<p >Atributo de auxílio ao algoritmo de Djikstra e ao Bfs: paragem predecedente da paragem em questão no percurso a ser considerado. </p>
 
 </div>
 </div>
@@ -184,7 +201,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >código da paragem de autocarro </p>
+<p >Código da paragem de autocarro. </p>
 
 </div>
 </div>
@@ -199,7 +216,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >nome da paragem de autocarro </p>
+<p >Nome da paragem de autocarro. </p>
 
 </div>
 </div>
@@ -214,7 +231,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >atributo de auxílio ao algoritmo de Djikstra: se a menor distância até à paragem em questão já foi computada </p>
+<p >Atributo de auxílio ao algoritmo de Djikstra e ao Bfs: se a menor distância até à paragem em questão já foi computada. </p>
 
 </div>
 </div>
@@ -229,7 +246,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >zona de tarifa em que a paragem se insere </p>
+<p >Zona de tarifa em que a paragem se insere. </p>
 
 </div>
 </div>

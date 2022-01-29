@@ -37,19 +37,6 @@ void LineGraph::addEdge(int src, double weight, int dest) {
     stops[src].adj.push_back({weight, dest});
 }
 
-double LineGraph::calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
-    double dLat = (latitude2 - latitude1) * M_PI / 180.0;
-    double dLon = (longitude2 - longitude1) * M_PI / 180.0;
-
-    latitude1 = (latitude1) * M_PI / 180.0;
-    latitude2 = (latitude2) * M_PI / 180.0;
-
-    double a = pow(sin(dLat / 2), 2) + pow(sin(dLon / 2), 2) * cos(latitude1) * cos(latitude2);
-    double rad = 6371;
-    double c = 2 * asin(sqrt(a));
-    return rad * c * 1000;
-}
-
 //bfs
 int LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source) {
     for (Node n: stops)
