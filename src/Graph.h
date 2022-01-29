@@ -258,7 +258,7 @@ public:
      */
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     /**
-     * Determina com recurso ao algortimo bfsZone(), qual o caminho entre dois locais (partida e destino) percorre menor número de zonas.
+     * Determina com recurso ao algortimo bfsZone(), qual o caminho entre dois locais (partida e destino) que percorre menor número de zonas.
      * @param latitude1 latitude do local de partida.
      * @param longitude1 longitude do local de partida.
      * @param latitude2 latitude do destino.
@@ -282,7 +282,7 @@ public:
     void showShortestPathChangingLines(vector<int> path, double distance1, double distance2) const;
     /**
      * Imprime na tela o número total de zonas que serão percorridas e o respetivo caminho
-     * que o utilizador deve seguir de modo que o custo seja o menor possível (menos zonas).
+     * que o utilizador deve seguir de modo que o custo seja o mais barato possível (menos zonas).
      * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
      * @param distance1 é a distância entre a paragem incial e o local de partida.
      * @param distance2 é a distância entre a paragem incial e o destino.

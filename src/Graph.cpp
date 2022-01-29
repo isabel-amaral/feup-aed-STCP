@@ -217,10 +217,10 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
 
 void Graph::showMinimumStopsPath(vector<int> path, double distance1, double distance2) const {
     if (path.empty()){
-        cout << "Nao foi encontrado nenhum caminho.";
+        cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-    cout << "Este caminho passa por um total de " << stops[path.back()].dist << " paragens." << endl << endl;
+    cout << "\nEste caminho passa por um total de " << stops[path.back()].dist + 1 << " paragens." << endl;
     showPath(path, distance1, distance2);
 }
 
@@ -311,10 +311,10 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
 
 void Graph::showShortestPathChangingLines(vector<int> path, double distance1, double distance2) const {
     if (path.empty()){
-        cout << "Nao foi encontrado nenhum caminho.";
+        cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-    cout << "Este caminho passa por um total de" << stops[path.back()].dist + distance2 << " metros." << endl << endl;
+    cout << "\nEste caminho percorre um total de " << stops[path.back()].dist + distance2 << " metros." << endl;
     showPath(path, distance1, distance2);
 }
 
@@ -348,10 +348,10 @@ void Graph::getLowestZoneChanges(double latitude1, double longitude1, double lat
 
 void Graph::showLowestZoneChanges(vector<int> path, double distance1, double distance2) const {
     if (path.empty()){
-        cout << "Nao foi encontrado nenhum caminho.";
+        cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-    cout << "Este caminho passa por um total de" << stops[path.back()].numZones << " zonas." << endl << endl;
+    cout << "\nEste caminho passa por um total de" << stops[path.back()].numZones << " zona(s)." << endl;
     showPath(path, distance1, distance2);
 }
 
@@ -359,7 +359,7 @@ void Graph::showPath(vector<int> path, double distance1, double distance2) const
     int lastStop = path.back();
     string lastLine = "0";
 
-    cout << "Caminhe" << distance1 << " metros ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
+    cout << "Caminhe " << distance1 << " metros ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
     for (auto i = 0; i < path.size() -1; i++) {
         int index = path[i];
         for (const auto& ad : stops[index].adj){
@@ -389,7 +389,7 @@ void Graph::showPath(vector<int> path, double distance1, double distance2) const
 
     cout << lastLine << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << " - " << stops[lastStop].zone << endl << endl;
     cout << "Descer em " << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
-    cout << "Caminhe " << distance2 << "metros ate ao seu destino." << endl;
+    cout << "Caminhe " << distance2 << " metros ate ao seu destino." << endl;
 }
 
 
