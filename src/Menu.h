@@ -19,8 +19,8 @@ public:
     void readOption(const unsigned& minOption, const unsigned& maxOption);
     void processOption(double latitude1, double longitude1);
     void menu0();
-    void menu1(double latitude, double longitude);
-    void menu2(double latitude, double longitude);
+    void menu1();
+    void menu2();
 };
 
 #endif //STCP_MENU_H

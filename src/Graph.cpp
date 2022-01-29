@@ -179,32 +179,42 @@ void Graph::getMinimumStopsPath(double latitude1, double longitude1, double lati
 
 void Graph::showMinimumStopsPath(vector<int> path) const {
     int lastStop = path.back();
-    string lastLineBeforeWalking;
+    string lastLine = "0";
 
-    if (path.empty())
+    if (path.empty()){
+        cout << "Nao foi encontrado nenhum caminho.";
         return;
-
+    }
+    
     cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
     for (auto i = 0; i < path.size() -1; i++) {
         int index = path[i];
         for (const auto& ad : stops[index].adj){
-            if (ad.dest == path[i+1]) {
-                if (!ad.lineCode.empty()) {
-                    cout << ad.lineCode << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
-                    lastLineBeforeWalking = ad.lineCode;
-                    break;
+            if (ad.dest != path[i+1])
+                continue;
+            string line = ad.lineCode;
+            if (!line.empty()) {
+                if (line != lastLine){
+                    if (index != path.front()){
+                        cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
+                        cout << "Descer em " << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
+                    }
+                    cout << "Esperar por " << line << endl;
+                    lastLine = line;
                 }
-                else {
-                    int nextStop = path[i+1];
-                    cout << lastLineBeforeWalking << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
-                    cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
-                    break;
-                }
+                cout << line << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
+                break;
+            }
+            else {
+                int nextStop = path[i+1];
+                cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl << endl;
+                cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
+                break;
             }
         }
     }
 
-    cout << lastLineBeforeWalking << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
+    cout << lastLine << "-" << stops[lastStop].stopName << " (" << stops[lastStop].stopCode << ")" << endl;
     cout << "Caminhe ate ao seu destino" << endl;
 }
 
