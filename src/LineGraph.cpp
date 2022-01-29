@@ -38,12 +38,14 @@ void LineGraph::addEdge(int src, double weight, int dest) {
 }
 
 //bfs
-int LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source) {
+LineGraph::Result LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source) {
     for (Node n: stops)
         n.visited = false;
 
     bool foundCloseStop = false;
+    string lastStopFound;
     int count = 0;
+    double distance = 0;
     queue<int> q;
     q.push(source);
     stops[source].visited = true;
@@ -53,17 +55,29 @@ int LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEn
         q.pop();
         for (Edge e: stops[u].adj) {
             if (!stops[e.dest].visited) {
-                if (!foundCloseStop && stopsNearEnd.hasKey(stops[e.dest].stopCode))
-                        foundCloseStop = true;
-                else if (foundCloseStop && !stopsNearEnd.hasKey(stops[e.dest].stopCode))
-                    break;
+                if (!foundCloseStop && stopsNearEnd.hasKey(stops[e.dest].stopCode)) {
+                    foundCloseStop = true;
+                    lastStopFound = stops[e.dest].stopCode;
+                }
+                else if (foundCloseStop) {
+                    if (!stopsNearEnd.hasKey(stops[e.dest].stopCode))
+                        break;
+                    lastStopFound = stops[e.dest].stopCode;
+                }
                 q.push(e.dest);
                 stops[e.dest].visited = true;
                 count++;
+                distance += e.weight;
             }
         }
     }
+
+    Result result;
+    result.count = count;
     if (count >= n - source)
-        return INT_MAX;
-    return count;
+        result.distance = LONG_MAX;
+    else
+        result.distance = distance;
+    result.endStop = lastStopFound;
+    return result;
 }

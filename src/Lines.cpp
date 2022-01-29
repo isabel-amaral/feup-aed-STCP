@@ -55,7 +55,8 @@ LineGraph Lines::findCorrespondingLine(string line, string stopCode) const {
 void Lines::getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2) {
     MinHeap<string, double> stopsNearStart = findClosestStops(latitude1, longitude1);
     MinHeap<string , double> stopsNearEnd = findClosestStops(latitude2, longitude2);
-    int countStops = INT_MAX;
+    int countStops;
+    double distance = LONG_MAX;
     string fasterLine, startStop;
 
     while (stopsNearStart.getSize() != 0) {
@@ -65,19 +66,29 @@ void Lines::getShortestPathWithinSameLine(double latitude1, double longitude1, d
             if (l == "")
                 continue;
             LineGraph currentLine = findCorrespondingLine(l, s);
-            int count = currentLine.findPathWithinSameLine(stopsNearEnd, currentLine.getStopsInfo().at(s));
-            if (count < countStops) {
-                countStops = count;
+            LineGraph::Result result = currentLine.findPathWithinSameLine(stopsNearEnd, currentLine.getStopsInfo().at(s));
+            double d = result.distance;
+            //walking distance from starting position to first stop
+            if (d != LONG_MAX) {
+                d += Graph::calculateDistance(latitude1, longitude1,
+                                              buses.getStopLatitude(buses.getStopsInfo().at(s)),
+                                              buses.getStopLongitude(buses.getStopsInfo().at(s)));
+                //walking distance from end position to last stop
+                d += Graph::calculateDistance(latitude2, longitude2,
+                                              buses.getStopLatitude(buses.getStopsInfo().at(result.endStop)),
+                                              buses.getStopLongitude(buses.getStopsInfo().at(result.endStop)));
+            }
+            if (d < distance) {
+                countStops = result.count;
                 fasterLine = l;
                 startStop = s;
             }
         }
     }
-    showShortestPathWithinSameLine(countStops, fasterLine, startStop);
+    showShortestPathWithinSameLine(countStops, distance, fasterLine, startStop);
 }
 
-void Lines::showShortestPathWithinSameLine(int numStops, string line, string startStop) const {
-    cout << "_____________________________________________________________________" << endl;
+void Lines::showShortestPathWithinSameLine(int numStops, double distance, string line, string startStop) const {
     if (numStops == INT_MAX) {
         cout << "Nao foi encontrado nenhum caminho sem mudar de linhas.";
         return;
@@ -86,7 +97,7 @@ void Lines::showShortestPathWithinSameLine(int numStops, string line, string sta
     LineGraph l = findCorrespondingLine(line, startStop);
     cout << "Apanahe a linha " << l.getLineName() << " (" << line << ")." << endl;
     cout << "Chegara ao seu destino em " << numStops << " paragens." << endl;
-    //TODO: acrescentar cálculo da distânica
+    cout << "No total o percurso a percorrer sera de " << distance/1000 << " kilometros." << endl;
     cout << "Direcoes: " << endl << endl;
 
     vector<string> stops = l.getStops();

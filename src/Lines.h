@@ -68,7 +68,7 @@ public:
      */
     void getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2);
     //TODO
-    void showShortestPathWithinSameLine(int numStops, string line, string startStop) const;
+    void showShortestPathWithinSameLine(int numStops, double distance, string line, string startStop) const;
 };
 
 #endif //STCP_LINES_H

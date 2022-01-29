@@ -102,6 +102,11 @@ public:
      */
     void addEdge(int src, double weight, int dest);
 
+    struct Result {
+        int count;
+        double distance;
+        string endStop;
+    };
     /**
      * //TODO
      * @param stopsNearEnd fila de prioridade com todas as paragens próximas do ponto final
@@ -109,7 +114,7 @@ public:
      * @param source pragaem onde o algoritmo será iniciado
      * @return //TODO
      */
-    int findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source);
+    Result findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source);
 };
 
 #endif //STCP_LINEGRAPH_H
