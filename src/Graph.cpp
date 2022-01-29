@@ -185,7 +185,7 @@ void Graph::showMinimumStopsPath(vector<int> path) const {
         cout << "Nao foi encontrado nenhum caminho.";
         return;
     }
-    
+
     cout << "Caminhe ate " << stops[path.front()].stopCode << "-" << stops[path.front()].stopName << endl << endl;
     for (auto i = 0; i < path.size() -1; i++) {
         int index = path[i];

@@ -43,7 +43,7 @@ void Menu::readOption(const unsigned& minOption, const unsigned& maxOption) {
     } while (!validOption);
 }
 
-void Menu::processOption(double latitude1, double longitude1) {
+void Menu::processOption() {
     switch (option) {
         case 0: menu0();
             break;
