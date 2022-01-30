@@ -7,5 +7,10 @@ var searchData=
   ['showlowestzonechanges_4',['showLowestZoneChanges',['../class_graph.html#aedfb8379a39d481a8dcd50045ead7978',1,'Graph']]],
   ['showminimumstopspath_5',['showMinimumStopsPath',['../class_graph.html#ab816509e72c57ec4ed5b476d8dd98796',1,'Graph']]],
   ['showpath_6',['showPath',['../class_graph.html#a4b0c61248d6bfdaa93c8661dbfac4a58',1,'Graph']]],
+<<<<<<< HEAD
   ['showshortestpathchanginglines_7',['showShortestPathChangingLines',['../class_graph.html#adf9183af85d58066e1ec27bb59135132',1,'Graph']]]
+=======
+  ['showshortestpathchanginglines_7',['showShortestPathChangingLines',['../class_graph.html#adf9183af85d58066e1ec27bb59135132',1,'Graph']]],
+  ['showshortestpathwithinsameline_8',['showShortestPathWithinSameLine',['../class_lines.html#ad7963a1e644fa6c3e8ba64227d859110',1,'Lines']]]
+>>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
 ];

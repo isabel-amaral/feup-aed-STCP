@@ -332,14 +332,14 @@ public:
      */
     void getLowestZoneChanges(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
-     * Imprime na tela o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis.
+     * Imprime no ecrã o número de paragens e o caminho que o utilizador deve seguir de modo a percorrer menos paragens possíveis.
      * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
      * @param distance1 é a distância entre a paragem incial e o local de partida.
      * @param distance2 é a distância entre a paragem incial e o destino.
      */
     void showMinimumStopsPath(vector<int> path, double distance1, double distance2) const;
     /**
-     * Imprime na tela a distância e o respetivo caminho que o utilizador
+     * Imprime no ecrã a distância e o respetivo caminho que o utilizador
      * deve seguir de modo a percorrer menor distância possível.
      * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
      * @param distance1 é a distância entre a paragem incial e o local de partida.
@@ -347,7 +347,7 @@ public:
      */
     void showShortestPathChangingLines(vector<int> path, double distance1, double distance2) const;
     /**
-     * Imprime na tela o número total de zonas que serão percorridas e o respetivo caminho
+     * Imprime no ecrã o número total de zonas que serão percorridas e o respetivo caminho
      * que o utilizador deve seguir de modo que o custo seja o mais barato possível (menos zonas).
      * @param path vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho.
      * @param distance1 é a distância entre a paragem incial e o local de partida.

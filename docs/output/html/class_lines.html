@@ -87,8 +87,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8acdfaa99a214441b05b599fc5d5e513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0db97e83bb47cb3ef9dabdf8c9f07ef2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lines.html#a0db97e83bb47cb3ef9dabdf8c9f07ef2">getShortestPathWithinSameLine</a> (double latitude1, double longitude1, double latitude2, double longitude2)</td></tr>
 <tr class="separator:a0db97e83bb47cb3ef9dabdf8c9f07ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<<<<<<< HEAD
 <tr class="memitem:ad7963a1e644fa6c3e8ba64227d859110"><td class="memItemLeft" align="right" valign="top"><a id="ad7963a1e644fa6c3e8ba64227d859110" name="ad7963a1e644fa6c3e8ba64227d859110"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>showShortestPathWithinSameLine</b> (int numStops, double distance, string line, string startStop) const</td></tr>
+=======
+<tr class="memitem:ad7963a1e644fa6c3e8ba64227d859110"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lines.html#ad7963a1e644fa6c3e8ba64227d859110">showShortestPathWithinSameLine</a> (int numStops, double distance, string line, string startStop) const</td></tr>
+>>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
 <tr class="separator:ad7963a1e644fa6c3e8ba64227d859110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -306,6 +310,55 @@ Private Attributes</h2></td></tr>
 <p >Define a distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">walkingDistance</td><td>é a distância máxima. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad7963a1e644fa6c3e8ba64227d859110" name="ad7963a1e644fa6c3e8ba64227d859110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7963a1e644fa6c3e8ba64227d859110">&#9670;&nbsp;</a></span>showShortestPathWithinSameLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Lines::showShortestPathWithinSameLine </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numStops</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>startStop</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Imprime informação sobre o percurso de uma local para outro sem nunca mudar de autocarro. Imprime o nº de paragens e distância que o percorridas, o código e nome da linha que deve ser apanhada e o código e nome das várias paragens por onde passa. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numStops</td><td>nº de paragens percorridas. </td></tr>
+    <tr><td class="paramname">distance</td><td>distância percorrida. </td></tr>
+    <tr><td class="paramname">line</td><td>linha que será utilizada. </td></tr>
+    <tr><td class="paramname">startStop</td><td>paragem de início do percurso. </td></tr>
   </table>
   </dd>
 </dl>

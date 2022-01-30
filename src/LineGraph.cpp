@@ -37,9 +37,12 @@ void LineGraph::addEdge(int src, double weight, int dest) {
     stops[src].adj.push_back({weight, dest});
 }
 
-//bfs
+//algorithm: bfs
+//time complexity: O(n + e)
+//n: number of stops in the current line
+//e: number of edges in the current line's graph (number of connections between stops)
 LineGraph::Result LineGraph::findPathWithinSameLine(const MinHeap<string, double>& stopsNearEnd, int source) {
-    for (Node n: stops)
+    for (Node n: stops)  //O(N); N: number of stops in the current line
         n.visited = false;
 
     bool foundCloseStop = false;
@@ -53,7 +56,9 @@ LineGraph::Result LineGraph::findPathWithinSameLine(const MinHeap<string, double
     while (!q.empty()) {
         int u = q.front();
         q.pop();
-        for (Edge e: stops[u].adj) {
+        //visits every edge until it finds the last stop in StopsNearEnd
+        //worst case: visits every edge of the graph
+        for (Edge e: stops[u].adj) {  //O(E); E: number of edges in the current line's graph (number of connections between stops)
             if (!stops[e.dest].visited) {
                 if (!foundCloseStop && stopsNearEnd.hasKey(stops[e.dest].stopCode)) {
                     foundCloseStop = true;
@@ -72,6 +77,7 @@ LineGraph::Result LineGraph::findPathWithinSameLine(const MinHeap<string, double
         }
     }
 
+    //O(1)
     Result result;
     result.count = count;
     if (count >= n - source)

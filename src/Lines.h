@@ -44,6 +44,9 @@ public:
     void setWalkingDistance(double walkingDistance);
     /**
      * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
+     *
+     * time complexity: O(N)
+     * N: nº de paragens da STCP
      * @param latitude é a latitude do local.
      * @param longitude é a longitude do local.
      * @return Fila de prioridade de pares (inteiro, double) que representam internamente respetivamente
@@ -53,6 +56,10 @@ public:
     /**
      * Encontra na lista de grafos das linhas a linha correspondente ao código da linha pretendido
      * e que contenha uma determinada paragem (dado que existem duas linhas com o mesmo nome, correspondentes a sentidos opostos, na lista).
+     *
+     * time complexity: O(L) * O(n)
+     * L: number of lines in STCP
+     * n: number of stops in line L
      * @param line código da linha
      * @param stopCode código da paragem
      * @return o grafo que representa a linha de código line e que contenha a paragem stopCode.
@@ -61,13 +68,26 @@ public:
 
     /**
      * Determina, com recurso ao algoritmo findPathWithinSameLine() da classe LineGraph o percurso mais curto sem mudar de linha.
+     *
+     * time complexity: O(Ns) * O(L) * O(n)
+     * Ns: number of stops close to starting position
+     * L: number of lines in STCP
+     * n: number of stops in line L
      * @param latitude1 latitude do local de partida.
      * @param longitude1 longitude do local de partida.
      * @param latitude2 latitude do destino.
      * @param longitude2 longitude do destino.
      */
     void getShortestPathWithinSameLine(double latitude1, double longitude1, double latitude2, double longitude2);
-    //TODO
+    /**
+     * Imprime informação sobre o percurso de uma local para outro sem nunca mudar de autocarro.
+     * Imprime o nº de paragens e distância que o percorridas, o código e nome da linha que deve ser apanhada
+     * e o código e nome das várias paragens por onde passa.
+     * @param numStops nº de paragens percorridas.
+     * @param distance distância percorrida.
+     * @param line linha que será utilizada.
+     * @param startStop paragem de início do percurso.
+     */
     void showShortestPathWithinSameLine(int numStops, double distance, string line, string startStop) const;
 };
 
