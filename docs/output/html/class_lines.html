@@ -87,12 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8acdfaa99a214441b05b599fc5d5e513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0db97e83bb47cb3ef9dabdf8c9f07ef2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lines.html#a0db97e83bb47cb3ef9dabdf8c9f07ef2">getShortestPathWithinSameLine</a> (double latitude1, double longitude1, double latitude2, double longitude2)</td></tr>
 <tr class="separator:a0db97e83bb47cb3ef9dabdf8c9f07ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<<<<<<< HEAD
-<tr class="memitem:ad7963a1e644fa6c3e8ba64227d859110"><td class="memItemLeft" align="right" valign="top"><a id="ad7963a1e644fa6c3e8ba64227d859110" name="ad7963a1e644fa6c3e8ba64227d859110"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showShortestPathWithinSameLine</b> (int numStops, double distance, string line, string startStop) const</td></tr>
-=======
 <tr class="memitem:ad7963a1e644fa6c3e8ba64227d859110"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lines.html#ad7963a1e644fa6c3e8ba64227d859110">showShortestPathWithinSameLine</a> (int numStops, double distance, string line, string startStop) const</td></tr>
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
 <tr class="separator:ad7963a1e644fa6c3e8ba64227d859110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -130,7 +125,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(N)<br  />
+N: nº de paragens da STCP<br  />
+ Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude</td><td>é a latitude do local. </td></tr>
     <tr><td class="paramname">longitude</td><td>é a longitude do local. </td></tr>
@@ -166,7 +163,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Encontra na lista de grafos das linhas a linha correspondente ao código da linha pretendido e que contenha uma determinada paragem (dado que existem duas linhas com o mesmo nome, correspondentes a sentidos opostos, na lista). </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Encontra na lista de grafos das linhas a linha correspondente ao código da linha pretendido e que contenha uma determinada paragem (dado que existem duas linhas com o mesmo nome, correspondentes a sentidos opostos, na lista).</p>
+<p >time complexity: O(L) * O(n) L: number of lines in STCP n: number of stops in line L </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">line</td><td>código da linha </td></tr>
     <tr><td class="paramname">stopCode</td><td>código da paragem </td></tr>
@@ -232,7 +230,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Determina, com recurso ao algoritmo findPathWithinSameLine() da classe <a class="el" href="class_line_graph.html">LineGraph</a> o percurso mais curto sem mudar de linha. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(Ns) * O(L) * O(n)<br  />
+Ns: number of stops close to starting position<br  />
+L: number of lines in STCP<br  />
+n: number of stops in line L<br  />
+ Determina, com recurso ao algoritmo findPathWithinSameLine() da classe <a class="el" href="class_line_graph.html">LineGraph</a> o percurso mais curto sem mudar de linha. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do local de partida. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do local de partida. </td></tr>
@@ -436,8 +438,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/<a class="el" href="_lines_8h_source.html">Lines.h</a></li>
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/Lines.cpp</li>
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/<a class="el" href="_lines_8h_source.html">Lines.h</a></li>
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/Lines.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

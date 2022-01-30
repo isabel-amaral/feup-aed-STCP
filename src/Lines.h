@@ -43,10 +43,10 @@ public:
      */
     void setWalkingDistance(double walkingDistance);
     /**
-     * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
+     * Complexidade temporal: O(N)\n
+     * N: nº de paragens da STCP\n
      *
-     * time complexity: O(N)
-     * N: nº de paragens da STCP
+     * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
      * @param latitude é a latitude do local.
      * @param longitude é a longitude do local.
      * @return Fila de prioridade de pares (inteiro, double) que representam internamente respetivamente
@@ -67,12 +67,12 @@ public:
     LineGraph findCorrespondingLine(string line, string stopCode) const;
 
     /**
-     * Determina, com recurso ao algoritmo findPathWithinSameLine() da classe LineGraph o percurso mais curto sem mudar de linha.
+     * Complexidade temporal: O(Ns) * O(L) * O(n)\n
+     * Ns: number of stops close to starting position\n
+     * L: number of lines in STCP\n
+     * n: number of stops in line L\n
      *
-     * time complexity: O(Ns) * O(L) * O(n)
-     * Ns: number of stops close to starting position
-     * L: number of lines in STCP
-     * n: number of stops in line L
+     * Determina, com recurso ao algoritmo findPathWithinSameLine() da classe LineGraph o percurso mais curto sem mudar de linha.
      * @param latitude1 latitude do local de partida.
      * @param longitude1 longitude do local de partida.
      * @param latitude2 latitude do destino.

@@ -194,8 +194,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(1)</p>
-<p >Adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(1)<br  />
+ Adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">src</td><td>paragem de origem. </td></tr>
     <tr><td class="paramname">code</td><td>código da linha a que pertence o segmento de percurso. </td></tr>
@@ -232,8 +232,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(log(L)) L: Número de linhas que o grafo tem(tamanho de linesInfo).</p>
-<p >Adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por linesInfo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(log(L))<br  />
+L: Número de linhas que o grafo tem(tamanho de linesInfo).<br  />
+ Adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por linesInfo. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>código da linha a adicionar. </td></tr>
     <tr><td class="paramname">name</td><td>nome da linha a adicionar. </td></tr>
@@ -274,13 +275,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(cS) cS: Tamanho da lista</p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(cS)<br  />
+cS: Tamanho da lista</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">closestStops.</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<p>Acrescenta ao grafo, um novo nó que representa o local de partida/chegada do utilizador e também novos segmentos de percurso(edges) entre o local e as várias paragens(stops) próximas ao mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>n</p>
+<p >Acrescenta ao grafo, um novo nó que representa o local de partida/chegada do utilizador e também novos segmentos de percurso(edges) entre o local e as várias paragens(stops) próximas ao mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude</td><td>latitude do local de partida/chegada do utilizador. </td></tr>
     <tr><td class="paramname">longitude</td><td>longitude do local de partida/chegada do utilizador. </td></tr>
@@ -305,8 +308,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n^2) n: Tamanho/Número de nós do grafo.</p>
-<p >Adiciona segmentos de percurso (edges) entre paragens "vizinhas" (que estão a menos de 50 metros). </p>
+<p >Complexidade temporal: O(n^2)<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Adiciona segmentos de percurso (edges) entre paragens "vizinhas" (que estão a menos de 50 metros). </p>
 
 </div>
 </div>
@@ -335,15 +339,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n + E) E: número total de edges que o grafo possui. n: Tamanho/Número de nós do grafo.</p>
-<p >Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(n + E)<br  />
+E: número total de edges que o grafo possui.<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>nó de partida. </td></tr>
-<<<<<<< HEAD
     <tr><td class="paramname">b</td><td>nó de chegada. </td></tr>
-=======
-    <tr><td class="paramname">b</td><td>nó de chegada </td></tr>
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
   </table>
   </dd>
 </dl>
@@ -375,8 +377,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n + E) E: número total de edges que o grafo possui. n: Tamanho/Número de nós do grafo.</p>
-<p >Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(n + E)<br  />
+E: número total de edges que o grafo possui.<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>nó de partida. </td></tr>
     <tr><td class="paramname">b</td><td>nó de chegada. </td></tr>
@@ -431,8 +435,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(1)</p>
-<p >Calcula a distância entre dois pontos da Terra a partir de suas latitudes e longitudes. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(1)<br  />
+ Calcula a distância entre dois pontos da Terra a partir de suas latitudes e longitudes. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do ponto 1. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do ponto 1 </td></tr>
@@ -470,8 +474,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n) n: Tamanho/Número de nós do grafo.</p>
-<p >Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(n)<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude</td><td>latitude do local. </td></tr>
     <tr><td class="paramname">longitude</td><td>longitude do local. </td></tr>
@@ -538,11 +543,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<<<<<<< HEAD
-<p >Complexidade temporal: O(n + E) E: número total de edges que o grafo possui. n: Tamanho/Número de nós do grafo.</p>
-=======
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
-<p >Determina com recurso ao algortimo <a class="el" href="class_graph.html#a128fdc56501396a0c6058cdce15bdf2b">bfsZone()</a>, qual o caminho entre dois locais (partida e destino) que percorre menor número de zonas. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(n + E)<br  />
+E: número total de edges que o grafo possui.<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Determina com recurso ao algortimo <a class="el" href="class_graph.html#a128fdc56501396a0c6058cdce15bdf2b">bfsZone()</a>, qual o caminho entre dois locais (partida e destino) que percorre menor número de zonas. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do local de partida. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do local de partida. </td></tr>
@@ -591,8 +595,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n + E) E: número total de edges que o grafo possui. n: Tamanho/Número de nós do grafo.</p>
-<p >Determina, com recurso ao algoritmo <a class="el" href="class_graph.html#a773806dfc861a98f1f506334467df136">bfsDistance()</a>, qual o caminho entre dois locais (partida e destino) que passa por menos paragens. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(n + E)<br  />
+E: número total de edges que o grafo possui.<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Determina, com recurso ao algoritmo <a class="el" href="class_graph.html#a773806dfc861a98f1f506334467df136">bfsDistance()</a>, qual o caminho entre dois locais (partida e destino) que passa por menos paragens. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do local de partida. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do local de partida. </td></tr>
@@ -641,8 +647,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(E*log(n)) E: número total de edges que o grafo possui. n: Tamanho/Número de nós do grafo.</p>
-<p >Determina, com recurso ao algoritmo de dijkstra, qual o caminho entre dois locais (partida e destino) percorre menor distância. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(E*log(n))<br  />
+E: número total de edges que o grafo possui.<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Determina, com recurso ao algoritmo de dijkstra, qual o caminho entre dois locais (partida e destino) percorre menor distância. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">latitude1</td><td>latitude do local de partida. </td></tr>
     <tr><td class="paramname">longitude1</td><td>longitude do local de partida. </td></tr>
@@ -721,7 +729,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(Es) Es: nº de edges/ligações que a paragem</p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(Es)<br  />
+Es: nº de edges/ligações que a paragem</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>tem.</td></tr>
     <tr><td class="paramname">node</td><td>índice do nó do grafo. </td></tr>
@@ -798,8 +807,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(n)</p>
-<dl class="section return"><dt>Returns</dt><dd>Vetor de inteiros que representam internamente cada uma das paragens (nós) do grafo. </dd></dl>
+<p >Complexidade temporal: O(n)<br  />
+ </p><dl class="section return"><dt>Returns</dt><dd>Vetor de inteiros que representam internamente cada uma das paragens (nós) do grafo. </dd></dl>
 
 </div>
 </div>
@@ -863,13 +872,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(cS) cS: Tamanho da lista</p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(cS)<br  />
+cS: Tamanho da lista</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">closestStops.</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<p>Remove do grafo o nó posição (referente ao local de partida/chegada do utilizador) e todas as edges adicionais entre este nó e as paragens que se encontram na sua proximidade. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>n</p>
+<p >Remove do grafo o nó posição (referente ao local de partida/chegada do utilizador) e todas as edges adicionais entre este nó e as paragens que se encontram na sua proximidade. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">closestStops</td><td>é a lista que contém todas as paragens próximas ao respetivo local. </td></tr>
   </table>
@@ -921,8 +932,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(log(n)) n: Tamanho/Número de nós do grafo.</p>
-<p >Adiciona um novo nó (paragem) ao grafo. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(log(n))<br  />
+n: Tamanho/Número de nós do grafo.<br  />
+ Adiciona um novo nó (paragem) ao grafo. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>é o código da paragem. </td></tr>
     <tr><td class="paramname">name</td><td>é o nome da paragem. </td></tr>
@@ -950,8 +962,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Complexidade temporal: O(1)</p>
-<p >Define a distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Complexidade temporal: O(1)<br  />
+ Define a distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dist</td><td>é a distância máxima. </td></tr>
   </table>
@@ -991,11 +1003,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<<<<<<< HEAD
-<p >Imprime na tela o número total de zonas que serão percorridas e o respetivo caminho que o utilizador deve seguir de modo que o custo seja o mais barato possível (menos zonas). </p><dl class="params"><dt>Parameters</dt><dd>
-=======
 <p >Imprime no ecrã o número total de zonas que serão percorridas e o respetivo caminho que o utilizador deve seguir de modo que o custo seja o mais barato possível (menos zonas). </p><dl class="params"><dt>Parameters</dt><dd>
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
   <table class="params">
     <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
     <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
@@ -1042,7 +1050,6 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
     <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
     <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
-<<<<<<< HEAD
   </table>
   </dd>
 </dl>
@@ -1085,59 +1092,12 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
     <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
     <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
-=======
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<<<<<<< HEAD
-=======
-<a id="a4b0c61248d6bfdaa93c8661dbfac4a58" name="a4b0c61248d6bfdaa93c8661dbfac4a58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b0c61248d6bfdaa93c8661dbfac4a58">&#9670;&nbsp;</a></span>showPath()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Graph::showPath </td>
-          <td>(</td>
-          <td class="paramtype">vector&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>distance1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>distance2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Imprime de forma detalhada (linha, paragem, etc) o caminho que o utilizador deve seguir desde a sua posição inicial até ao seu destino final. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
-    <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
-    <tr><td class="paramname">distance2</td><td>é a distância entre a paragem incial e o destino. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
 <a id="adf9183af85d58066e1ec27bb59135132" name="adf9183af85d58066e1ec27bb59135132"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf9183af85d58066e1ec27bb59135132">&#9670;&nbsp;</a></span>showShortestPathChangingLines()</h2>
 
@@ -1169,11 +1129,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<<<<<<< HEAD
-<p >Imprime na tela a distância e o respetivo caminho que o utilizador deve seguir de modo a percorrer menor distância possível. </p><dl class="params"><dt>Parameters</dt><dd>
-=======
 <p >Imprime no ecrã a distância e o respetivo caminho que o utilizador deve seguir de modo a percorrer menor distância possível. </p><dl class="params"><dt>Parameters</dt><dd>
->>>>>>> d9298f26b187c85bfe68cce39e71bbb4292e7c3d
   <table class="params">
     <tr><td class="paramname">path</td><td>vetor de inteiros que representam internamente cada uma das paragens que fazem parte do caminho. </td></tr>
     <tr><td class="paramname">distance1</td><td>é a distância entre a paragem incial e o local de partida. </td></tr>
@@ -1301,8 +1257,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
-<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/feup-aed-STCP/Src/Graph.cpp</li>
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/<a class="el" href="_graph_8h_source.html">Graph.h</a></li>
+<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/1_Semestre/AED/Projeto2/STCP/Src/Graph.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

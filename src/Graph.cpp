@@ -327,7 +327,7 @@ void Graph::showLowestZoneChanges(vector<int> path, double distance1, double dis
         cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-    cout << "\nEste caminho passa por um total de" << stops[path.back()].numZones << " zona(s)." << endl;
+    cout << "\nEste caminho passa por um total de " << stops[path.back()].numZones << " zona(s)." << endl;
     showPath(path, distance1, distance2);
 }
 

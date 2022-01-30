@@ -107,7 +107,7 @@ public:
     Graph(int num);
 
     /**
-     * Complexidade temporal: O(n)
+     * Complexidade temporal: O(n)\n
      *
      * @return Vetor de inteiros que representam internamente cada uma das paragens (nós) do grafo.
      */
@@ -153,7 +153,7 @@ public:
      */
     double getStopLongitude(int node) const;
     /**
-     * Complexidade temporal: O(Es)
+     * Complexidade temporal: O(Es)\n
      * Es: nº de edges/ligações que a paragem @param node tem.
      *
      * @param node índice do nó do grafo.
@@ -177,8 +177,8 @@ public:
      */
     const map<string, string>& getLinesInfo() const;
     /**
-     * Complexidade temporal: O(log(n))
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(log(n))\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Adiciona um novo nó (paragem) ao grafo.
      * @param code é o código da paragem.
@@ -190,8 +190,8 @@ public:
      */
     void setNode(const string& code, const string& name, const string& zone, const double& latitude, const double& longitude);
     /**
-     * Complexidade temporal: O(log(L))
-     * L: Número de linhas que o grafo tem(tamanho de linesInfo).
+     * Complexidade temporal: O(log(L))\n
+     * L: Número de linhas que o grafo tem(tamanho de linesInfo).\n
      *
      * Adiciona o código e nome de uma linha ao conjunto de linhas já existentes, representado por linesInfo.
      * @param code código da linha a adicionar.
@@ -200,7 +200,7 @@ public:
      */
     void addLine(string code, string name);
     /**
-     * Complexidade temporal: O(1)
+     * Complexidade temporal: O(1)\n
      *
      * Adiciona um segmento de percurso, representado por uma edge, entre duas paragens consecutivas da mesma linha.
      * @param src paragem de origem.
@@ -211,7 +211,7 @@ public:
      */
     void addEdge(int src, string code, double weight, int dest);
     /**
-     * Complexidade temporal: O(1)
+     * Complexidade temporal: O(1)\n
      *
      * Define a distância máxima que o utilizador da STCP está disposto a andar para chegar a uma paragem.
      * @param dist é a distância máxima.
@@ -219,16 +219,16 @@ public:
      */
     void setWalkingDistance(double dist);
     /**
-     * Complexidade temporal: O(n^2)
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n^2)\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Adiciona segmentos de percurso (edges) entre paragens "vizinhas" (que estão a menos de 50 metros).
      *
      */
     void addWalkingEdges();
     /**
-     * Complexidade temporal: O(cS)
-     * cS: Tamanho da lista @param closestStops.
+     * Complexidade temporal: O(cS)\n
+     * cS: Tamanho da lista @param closestStops.\n
      *
      * Acrescenta ao grafo, um novo nó que representa o local de partida/chegada do utilizador e
      * também novos segmentos de percurso(edges) entre o local e as várias paragens(stops) próximas ao mesmo.
@@ -239,8 +239,8 @@ public:
      */
     void addPositionNode(double latitude, double longitude, list<int> closestStops);
     /**
-     * Complexidade temporal: O(cS)
-     * cS: Tamanho da lista @param closestStops.
+     * Complexidade temporal: O(cS)\n
+     * cS: Tamanho da lista @param closestStops.\n
      *
      * Remove do grafo o nó posição (referente ao local de partida/chegada do utilizador)
      * e todas as edges adicionais entre este nó e as paragens que se encontram na sua proximidade.
@@ -249,7 +249,7 @@ public:
      */
     void removePositionNode(list<int> closestStops);
     /**
-     * Complexidade temporal: O(1)
+     * Complexidade temporal: O(1)\n
      *
      * Calcula a distância entre dois pontos da Terra a partir de suas latitudes e longitudes.
      * @param latitude1 latitude do ponto 1.
@@ -261,8 +261,8 @@ public:
      */
     static double calculateDistance(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
-     * Complexidade temporal: O(n)
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n)\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Determina, com base no atributo walkingDistance, as paragens próximas a um determindado local, a partir da latitude e longitude do mesmo.
      * @param latitude latitude do local.
@@ -272,9 +272,9 @@ public:
      */
     list<int> findClosestStops(double latitude, double longitude);
     /**
-     * Complexidade temporal: O(n + E)
-     * E: número total de edges que o grafo possui.
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n + E)\n
+     * E: número total de edges que o grafo possui.\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos paragens.
      * @param a nó de partida.
@@ -283,9 +283,9 @@ public:
      */
     void bfsDistance(int a, int b);
     /**
-     * Complexidade temporal: O(n + E)
-     * E: número total de edges que o grafo possui.
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n + E)\n
+     * E: número total de edges que o grafo possui.\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Implementação auxiliar do algoritmo bfs a ser usado na procura do caminho que passa por menos zonas.
      * @param a nó de partida.
@@ -294,9 +294,9 @@ public:
      */
     void bfsZone (int a, int b);
     /**
-     * Complexidade temporal: O(n + E)
-     * E: número total de edges que o grafo possui.
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n + E)\n
+     * E: número total de edges que o grafo possui.\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Determina, com recurso ao algoritmo bfsDistance(), qual o caminho entre dois locais (partida e destino) que passa por menos paragens.
      * @param latitude1 latitude do local de partida.
@@ -306,9 +306,9 @@ public:
      */
     void getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2);
     /**
-     * Complexidade temporal: O(E*log(n))
-     * E: número total de edges que o grafo possui.
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(E*log(n))\n
+     * E: número total de edges que o grafo possui.\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Determina, com recurso ao algoritmo de dijkstra, qual o caminho entre dois locais (partida e destino) percorre menor distância.
      * @param latitude1 latitude do local de partida.
@@ -319,9 +319,9 @@ public:
      */
     void getShortestPathChangingLines(double latitude, double longitude, double latitude2, double longitude2);
     /**
-     * Complexidade temporal: O(n + E)
-     * E: número total de edges que o grafo possui.
-     * n: Tamanho/Número de nós do grafo.
+     * Complexidade temporal: O(n + E)\n
+     * E: número total de edges que o grafo possui.\n
+     * n: Tamanho/Número de nós do grafo.\n
      *
      * Determina com recurso ao algortimo bfsZone(), qual o caminho entre dois locais (partida e destino) que percorre menor número de zonas.
      * @param latitude1 latitude do local de partida.
