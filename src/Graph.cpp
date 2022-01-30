@@ -138,7 +138,7 @@ void Graph::bfsDistance(int a, int b) {
         int u = aux.front(); aux.pop();
         for (auto e : stops[u]. adj) {
             int w = e.dest;
-            if (!stops[w].visited) { // novo no
+            if (!stops[w].visited) { // novo nó
                 aux.push(w);
                 stops[w].visited = true;
                 stops[w].dist = stops[u].dist + 1;
@@ -179,40 +179,29 @@ void Graph::bfsZone(int a, int b) {
 void Graph::getMinimumStopsPath(double latitude1, double longitude1, double latitude2, double longitude2) {
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
-    vector<int> result;
-    int lastMinDist = INT_MAX, start = 0, end = 0;
+    addPositionNode(latitude1, longitude1, stopsNearStart);
+    addPositionNode(latitude2, longitude2, stopsNearEnd);
+    int originIndex = stops.size() - 2;
+    int destinationIndex = stops.size() - 1;
+    vector<int> path;
 
-    for (auto i: stopsNearStart) {
-        for (auto j: stopsNearEnd){
-            bfsDistance(i, j);
-            if (stops[j].visited && stops[j].dist < lastMinDist){
-                lastMinDist = stops[j].dist;
-                start = i;
-                end = j;
-            }
+    bfsDistance(originIndex, destinationIndex);
+
+    if (stops[destinationIndex].visited) {
+        int parent = stops[destinationIndex].pred;
+        while (parent != originIndex) {
+            path.insert(path.begin(), parent);
+            parent = stops[parent].pred;
         }
     }
-
+    removePositionNode(stopsNearEnd);
+    removePositionNode(stopsNearStart);
     double distance1 = 0, distance2 = 0;
-    if (start == 0 && end == 0){    // Se foi encontrado um caminho
-        showMinimumStopsPath(result, distance1, distance2);
-        return;
+    if (!path.empty()){
+        distance1 = calculateDistance(latitude1, longitude1, getStopLatitude(path.front()), getStopLongitude(path.front()));
+        distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(path.back()), getStopLongitude(path.back()));
     }
-    bfsDistance(start, end);
-    result.insert(result.begin(), end);
-    int parent = stops.at(end).pred;
-    while (parent != 0) {  // Enquanto não chegar a paragem inicial que é a única que possui parent = 0
-        result.insert(result.begin(), parent);
-        parent = stops.at(parent).pred;
-    }
-
-
-    if (!result.empty()){
-        distance1 = calculateDistance(latitude1, longitude1, getStopLatitude(result.front()), getStopLongitude(result.front()));
-        distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(result.back()), getStopLongitude(result.back()));
-    }
-    showMinimumStopsPath(result, distance1, distance2);
-
+    showMinimumStopsPath(path, distance1, distance2);
 }
 
 void Graph::showMinimumStopsPath(vector<int> path, double distance1, double distance2) const {
@@ -220,7 +209,7 @@ void Graph::showMinimumStopsPath(vector<int> path, double distance1, double dist
         cout << "Nao foi encontrado nenhum caminho." << endl;
         return;
     }
-    cout << "\nEste caminho passa por um total de " << stops[path.back()].dist + 1 << " paragens." << endl;
+    cout << "\nEste caminho passa por um total de " << stops[path.back()].dist << " paragens." << endl;
     showPath(path, distance1, distance2);
 }
 
@@ -238,26 +227,13 @@ list<int> Graph::findClosestStops(double latitude, double longitude) {
     return closestStops;
 }
 
-int Graph::findClosestStop(double latitude, double longitude) {
-    double minDistance = LONG_MAX;
-    int closestStopIndex;
-    for(int v = 1; v < stops.size(); v++) {
-        double distance = calculateDistance(latitude, longitude, stops[v].latitude, stops[v].longitude);
-        if(distance < minDistance) {
-            minDistance = distance;
-            closestStopIndex = v + 1;
-        }
-    }
-    return closestStopIndex;
-}
-
 void Graph::getShortestPathChangingLines(double latitude1, double longitude1, double latitude2, double longitude2) {
     list<int> stopsNearStart = findClosestStops(latitude1, longitude1);
     list<int> stopsNearEnd = findClosestStops(latitude2, longitude2);
     addPositionNode(latitude1, longitude1, stopsNearStart);
     addPositionNode(latitude2, longitude2, stopsNearEnd);
     MinHeap<int, double> visitedStops(stops.size(), -1);
-
+    //Algoritmo de Djikstra:
     for (int i = 1; i < stops.size(); i++) {
         stops[i].visited = false;
         stops[i].dist = INT_MAX;
@@ -301,7 +277,7 @@ void Graph::getShortestPathChangingLines(double latitude1, double longitude1, do
     }
     removePositionNode(stopsNearEnd);
     removePositionNode(stopsNearStart);
-    double distance1, distance2;
+    double distance1 = 0, distance2 = 0;
     if (!path.empty()){
         distance1 = stops[path.front()].dist;
         distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(path.back()), getStopLongitude(path.back()));
@@ -338,7 +314,7 @@ void Graph::getLowestZoneChanges(double latitude1, double longitude1, double lat
     }
     removePositionNode(stopsNearEnd);
     removePositionNode(stopsNearStart);
-    double distance1, distance2;
+    double distance1 = 0, distance2 = 0;
     if (!path.empty()){
         distance1 = calculateDistance(latitude1, longitude1, getStopLatitude(path.front()), getStopLongitude(path.front()));
         distance2 = calculateDistance(latitude2, longitude2, getStopLatitude(path.back()), getStopLongitude(path.back()));
@@ -381,6 +357,7 @@ void Graph::showPath(vector<int> path, double distance1, double distance2) const
             else {
                 int nextStop = path[i+1];
                 cout << lastLine << "-" << stops[index].stopName << " (" << stops[index].stopCode << ")" << " - " << stops[index].zone << endl << endl;
+                cout << "Descer em " << stops[index].stopName << " (" << stops[index].stopCode << ")" << endl;
                 cout << "Caminhe ate " << stops[nextStop].stopName << " (" << stops[nextStop].stopCode << ")" << endl << endl;
                 break;
             }
