@@ -82,9 +82,12 @@ void Menu::menu1() {
     cin >> latitude1;
     cout << "Indique a longitude a que se encontra: " << endl;
     cin >> longitude1;
-    cout << "Encontra-se a: " << endl;
 
     list<int> closestStops = buses.findClosestStops(latitude1, longitude1);
+    if (closestStops.empty())
+        cout << "Nao ha nenhuma paragem nas redondezas." << endl;
+    else
+        cout << "Encontra-se a: " << endl;
     for (list<int>::iterator it = closestStops.begin(); it != closestStops.end(); it++) {
         cout << Graph::calculateDistance(latitude1, longitude1,
                                          buses.getStopLatitude(*it),
