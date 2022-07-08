@@ -42,4 +42,4 @@ Some details regarding implementation:
     - A list of obejcts of the class LineGraph, similar to the Graph class, but each object only containing the information regarding the stops and connections between stops of a specific line.
 - In the Graph object we also added extra edges between stops that did not belong to the same line or which were not consecutive, but that were close enough so that the user had the possibility of walking between those two stops in case this contributed to a better path.
 
-For a more detailed project report (pt) check out ppt presentation [here](./docs/presentation.pdf).
+For a more detailed project report (pt), check out ppt presentation [here](./docs/presentation.pdf).
